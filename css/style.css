@@ -1,11 +1,12 @@
 /* ==================================================
    JOGJA TOURISM
+   by Wasisyoga
    MAIN STYLESHEET
 ================================================== */
 
 
 /* ==================================================
-   1. RESET
+   RESET
 ================================================== */
 
 * {
@@ -19,157 +20,210 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #f7f6f0;
-    color: #222222;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: #f7f5ef;
+    color: #173c2c;
+
     line-height: 1.6;
-}
 
-a {
-    text-decoration: none;
-}
-
-button {
-    font-family: inherit;
+    overflow-x: hidden;
 }
 
 img {
-    max-width: 100%;
     display: block;
+    width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    font: inherit;
 }
 
 
 /* ==================================================
-   2. COLOR VARIABLES
+   VARIABLES
 ================================================== */
 
 :root {
-    --green: #1f3d2b;
-    --green-dark: #172f22;
-    --green-light: #315c42;
 
-    --gold: #b08d3c;
-    --gold-light: #d2b56b;
+    --green: #173c2c;
+    --green-light: #274d3c;
 
-    --cream: #f7f6f0;
-    --cream-dark: #eeede5;
+    --cream: #f7f5ef;
+    --cream-dark: #eeece4;
+
+    --gold: #b38a35;
+
+    --text: #173c2c;
+    --muted: #68736c;
 
     --white: #ffffff;
 
-    --text: #222222;
-    --gray: #666666;
-    --gray-light: #999999;
+    --border: rgba(23, 60, 44, .13);
 
-    --border: #deddd4;
+    --container: 1180px;
+
 }
 
 
 /* ==================================================
-   3. GLOBAL CONTAINER
+   GLOBAL
 ================================================== */
 
 .container {
-    width: 90%;
-    max-width: 1200px;
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
     margin: 0 auto;
+}
+
+.section {
+    padding: 110px 0;
+}
+
+.mini-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    color: var(--gold);
+}
+
+.mini-title::before {
+    content: "";
+
+    width: 28px;
+    height: 1px;
+
+    background: currentColor;
 }
 
 
 /* ==================================================
-   4. NAVBAR
+   NAVBAR
 ================================================== */
 
 .navbar {
-    position: absolute;
+    position: sticky;
     top: 0;
-    left: 0;
-
-    width: 100%;
-
-    padding: 25px 0;
 
     z-index: 1000;
+
+    height: 82px;
+
+    background:
+        rgba(247, 245, 239, .94);
+
+    backdrop-filter: blur(14px);
+
+    border-bottom:
+        1px solid var(--border);
 }
 
-.navbar-content {
+.nav-inner {
+    height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 
-/* LOGO */
+/* BRAND */
 
-.logo {
-    color: var(--green);
+.brand {
+    display: flex;
+    flex-direction: column;
 
-    font-size: 22px;
+    text-decoration: none;
+
+    line-height: 1;
+}
+
+.brand-title {
+    font-size: 19px;
     font-weight: 700;
 
-    letter-spacing: 1px;
-
-    white-space: nowrap;
+    letter-spacing: 2px;
 }
 
-.logo span {
-    font-weight: 400;
+.brand-subtitle {
+    margin-top: 7px;
+
+    font-size: 8px;
+    letter-spacing: 2.5px;
+
+    color: #7c877f;
+
+    text-transform: uppercase;
 }
 
 
-/* NAVIGATION */
+/* NAV LINKS */
 
-.nav-menu {
+.nav-links {
     display: flex;
     align-items: center;
 
-    gap: 25px;
+    gap: 30px;
 }
 
-.nav-menu a {
+.nav-links a {
     position: relative;
 
-    color: var(--green);
+    padding: 8px 0;
+
+    text-decoration: none;
 
     font-size: 13px;
-    font-weight: 500;
 
-    transition: color 0.3s ease;
+    color: var(--text);
+
+    transition: color .25s ease;
 }
 
-.nav-menu a::after {
+.nav-links a::after {
     content: "";
 
     position: absolute;
 
     left: 0;
-    bottom: -7px;
+    bottom: -8px;
 
     width: 0;
     height: 2px;
 
-    background-color: var(--gold);
+    background: var(--gold);
 
-    transition: width 0.3s ease;
+    transition: width .25s ease;
 }
 
-.nav-menu a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: var(--gold);
 }
 
-.nav-menu a:hover::after {
-    width: 100%;
-}
-
-.nav-menu a.active {
-    color: var(--gold);
-}
-
-.nav-menu a.active::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
     width: 100%;
 }
 
 
-/* MOBILE MENU BUTTON */
+/* MOBILE BUTTON */
 
 .menu-toggle {
     display: none;
@@ -177,124 +231,113 @@ img {
     width: 42px;
     height: 42px;
 
-    border: none;
+    border: 1px solid var(--border);
+
     background: transparent;
 
-    color: var(--green);
-
-    font-size: 25px;
-
     cursor: pointer;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+}
+
+.menu-toggle span {
+    width: 18px;
+    height: 1.5px;
+
+    background: var(--green);
+
+    transition: .3s ease;
 }
 
 
 /* ==================================================
-   5. HERO
+   HERO
 ================================================== */
 
 .hero {
     position: relative;
 
-    min-height: 100vh;
+    min-height: 650px;
 
     display: flex;
     align-items: center;
 
     overflow: hidden;
 
-    background-color: var(--cream);
+    background: var(--cream);
 }
 
-
-/* Decorative circle */
-
-.hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 520px;
-    height: 520px;
-
-    right: -220px;
-    top: 90px;
-
-    border: 1px solid #deddd4;
-
-    border-radius: 50%;
-}
-
-.hero::after {
-    content: "";
-
-    position: absolute;
-
-    width: 330px;
-    height: 330px;
-
-    right: -120px;
-    top: 185px;
-
-    border: 1px solid #e2e1d9;
-
-    border-radius: 50%;
-}
-
-
-/* Green bottom line */
-
-.hero-content::after {
-    content: "";
-
-    position: absolute;
-
-    left: 0;
-    bottom: -120px;
-
-    width: 100px;
-    height: 5px;
-
-    background-color: var(--green);
-}
-
-
-/* HERO CONTENT */
-
-.hero-content {
+.hero-grid {
     position: relative;
-
     z-index: 2;
 
-    padding-top: 80px;
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        .78fr;
+
+    gap: 80px;
+
+    align-items: center;
+
+    padding: 75px 0;
 }
 
 
-/* SUBTITLE */
+/* HERO TEXT */
 
-.hero-subtitle {
-    color: var(--gold);
+.hero-text {
+    position: relative;
+    z-index: 2;
+}
 
-    font-size: 11px;
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 22px;
+
+    font-size: 10px;
     font-weight: 700;
 
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
+}
 
-    margin-bottom: 20px;
+.eyebrow span {
+    width: 34px;
+    height: 1px;
+
+    background: var(--gold);
 }
 
 
-/* TITLE */
-
 .hero h1 {
-    color: var(--green);
+    margin: 0;
 
-    font-size: clamp(48px, 7vw, 82px);
+    font-size:
+        clamp(58px, 7vw, 96px);
 
-    font-weight: 500;
+    line-height: .92;
 
-    line-height: 1.05;
+    letter-spacing: -4px;
 
-    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.hero h1 i {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: 400;
+    font-style: italic;
 }
 
 
@@ -303,1166 +346,1848 @@ img {
 .hero-description {
     max-width: 570px;
 
-    color: var(--gray);
+    margin-top: 30px;
 
-    font-size: 16px;
-
-    line-height: 1.8;
-
-    margin-bottom: 32px;
-}
-
-
-/* PRIMARY BUTTON */
-
-.btn-primary {
-    display: inline-block;
-
-    padding: 14px 27px;
-
-    background-color: var(--green);
-    color: var(--white);
-
-    border: 1px solid var(--green);
-
-    border-radius: 3px;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: var(--green-light);
-
-    border-color: var(--green-light);
-
-    transform: translateY(-2px);
-}
-
-
-/* ==================================================
-   6. GENERAL SECTION TITLE
-================================================== */
-
-.section-title {
-    max-width: 680px;
-
-    margin-bottom: 50px;
-}
-
-.section-title p,
-.section-subtitle {
-    color: var(--gold);
-
-    font-size: 11px;
-    font-weight: 700;
-
-    letter-spacing: 3px;
-
-    margin-bottom: 14px;
-}
-
-.section-title h2 {
-    color: var(--green);
-
-    font-size: 43px;
-    font-weight: 500;
-
-    line-height: 1.15;
-
-    margin-bottom: 20px;
-}
-
-.section-title span {
-    display: block;
-
-    color: var(--gray);
+    color: var(--muted);
 
     font-size: 15px;
 
-    line-height: 1.8;
+    line-height: 1.9;
 }
 
 
-/* ==================================================
-   7. DESTINASI
-================================================== */
+/* BUTTONS */
 
-.destinasi {
-    padding: 100px 0;
+.hero-buttons {
+    display: flex;
+    align-items: center;
 
-    background-color: var(--white);
+    gap: 24px;
+
+    margin-top: 32px;
 }
 
-.destinasi-grid {
-    display: grid;
+.button {
+    display: inline-flex;
 
-    grid-template-columns: repeat(4, 1fr);
+    align-items: center;
+    justify-content: center;
 
     gap: 18px;
-}
 
-.destinasi-card {
-    position: relative;
+    min-height: 50px;
 
-    min-height: 330px;
+    padding: 0 22px;
 
-    padding: 30px;
-
-    background-color: var(--cream);
-
-    border: 1px solid var(--border);
-
-    transition: all 0.3s ease;
-}
-
-.destinasi-card:hover {
-    transform: translateY(-6px);
-
-    border-color: var(--gold);
-
-    box-shadow: 0 10px 30px rgba(31, 61, 43, 0.07);
-}
-
-
-/* NUMBER */
-
-.destinasi-number {
-    color: var(--gold);
+    text-decoration: none;
 
     font-size: 12px;
     font-weight: 700;
 
-    letter-spacing: 1px;
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.button span {
+    font-size: 18px;
+
+    transition: transform .25s ease;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+}
+
+.button:hover span {
+    transform: translateX(5px);
+}
+
+.button-primary {
+    color: white;
+
+    background: var(--green);
+}
+
+.button-primary:hover {
+    background: var(--green-light);
+}
+
+.button-light {
+    color: var(--green);
+
+    background: var(--cream);
+}
+
+
+/* TEXT BUTTON */
+
+.text-button {
+    display: inline-flex;
+
+    gap: 10px;
+
+    padding: 10px 0;
+
+    border-bottom:
+        1px solid var(--gold);
+
+    text-decoration: none;
+
+    font-size: 12px;
+
+    transition: .25s ease;
+}
+
+.text-button:hover {
+    color: var(--gold);
+}
+
+.text-button span {
+    font-size: 15px;
+}
+
+
+/* SIGNATURE */
+
+.hero-signature {
+    display: flex;
+    align-items: baseline;
+
+    gap: 10px;
+
+    margin-top: 55px;
+
+    color: #7a847e;
+}
+
+.hero-signature strong {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+.hero-signature span {
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* HERO VISUAL */
+
+.hero-visual {
+    position: relative;
+
+    width: 100%;
+    max-width: 470px;
+
+    justify-self: end;
+}
+
+.hero-photo {
+    position: relative;
+
+    width: 100%;
+    height: 540px;
+
+    overflow: hidden;
+
+    background: #dcd9cf;
+}
+
+.hero-photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    filter: saturate(.82);
+}
+
+
+/* PHOTO OVERLAY */
+
+.hero-photo::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(15, 45, 33, .65),
+            transparent 55%
+        );
+}
+
+.photo-caption {
+    position: absolute;
+
+    z-index: 2;
+
+    left: 30px;
+    bottom: 28px;
+
+    color: white;
+}
+
+.photo-caption span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+.photo-caption strong {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 22px;
+
+    font-weight: 400;
+}
+
+
+/* HERO BADGE */
+
+.hero-badge {
+    position: absolute;
+
+    right: -35px;
+    bottom: 40px;
+
+    width: 105px;
+    height: 105px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    background: var(--gold);
+
+    color: white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.12);
+}
+
+.hero-badge span {
+    font-size: 7px;
+
+    letter-spacing: 2px;
+}
+
+.hero-badge strong {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 27px;
+
+    font-weight: 400;
+}
+
+.hero-badge small {
+    font-size: 6px;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* HERO PATTERN */
+
+.hero-pattern {
+    position: absolute;
+
+    right: -180px;
+    top: 50%;
+
+    width: 560px;
+    height: 560px;
+
+    border:
+        1px solid rgba(23,60,44,.08);
+
+    border-radius: 50%;
+
+    transform: translateY(-50%);
+}
+
+.hero-pattern::before,
+.hero-pattern::after {
+    content: "";
+
+    position: absolute;
+
+    border:
+        1px solid rgba(23,60,44,.07);
+
+    border-radius: 50%;
+}
+
+.hero-pattern::before {
+    inset: 70px;
+}
+
+.hero-pattern::after {
+    inset: 140px;
+}
+
+
+/* ==================================================
+   INTRO
+================================================== */
+
+.intro {
+    background: #efede6;
+}
+
+.intro-grid {
+    display: grid;
+
+    grid-template-columns:
+        60px
+        1fr
+        .9fr;
+
+    gap: 50px;
+
+    align-items: start;
+}
+
+.section-index {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 16px;
+
+    color: var(--gold);
+}
+
+.intro-heading h2 {
+    margin-top: 15px;
+
+    font-size:
+        clamp(40px, 5vw, 66px);
+
+    line-height: 1.02;
+
+    letter-spacing: -2px;
+}
+
+.intro-heading h2 i {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: 400;
+}
+
+.intro-text {
+    padding-top: 35px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.9;
+}
+
+.intro-text p + p {
+    margin-top: 20px;
+}
+
+
+/* ==================================================
+   SECTION HEADING
+================================================== */
+
+.section-heading {
+    display: grid;
+
+    grid-template-columns: 1fr .75fr;
+
+    gap: 60px;
+
+    align-items: end;
 
     margin-bottom: 55px;
 }
 
+.section-heading h2 {
+    margin-top: 14px;
 
-/* CARD TITLE */
+    font-size:
+        clamp(40px, 5vw, 64px);
 
-.destinasi-card h3 {
-    color: var(--green);
+    line-height: 1;
 
-    font-size: 20px;
-    font-weight: 600;
-
-    margin-bottom: 14px;
+    letter-spacing: -2px;
 }
 
+.section-heading h2 i {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-/* CARD DESCRIPTION */
-
-.destinasi-card p {
-    color: var(--gray);
-
-    font-size: 13px;
-
-    line-height: 1.75;
-
-    margin-bottom: 25px;
+    font-weight: 400;
 }
 
+.section-heading > p {
+    max-width: 430px;
 
-/* CARD LINK */
+    justify-self: end;
 
-.destinasi-card a {
-    color: var(--green);
+    color: var(--muted);
 
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 14px;
 
-    transition: color 0.3s ease;
-}
-
-.destinasi-card a:hover {
-    color: var(--gold);
+    line-height: 1.8;
 }
 
 
 /* ==================================================
-   8. EVENT
+   DESTINATIONS
 ================================================== */
 
-.event {
-    padding: 100px 0;
-
-    background-color: var(--cream);
+.destinations {
+    background: var(--cream);
 }
 
-.event-grid {
+.destination-grid {
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns:
+        repeat(12, 1fr);
 
     gap: 20px;
 }
 
-.event-card {
+.destination-card {
+    grid-column: span 6;
+
+    background: white;
+
+    border:
+        1px solid var(--border);
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.destination-card.large {
+    grid-column: span 6;
+    grid-row: span 2;
+}
+
+.destination-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 18px 45px rgba(23,60,44,.09);
+}
+
+.destination-image {
+    position: relative;
+
+    height: 220px;
+
+    overflow: hidden;
+
+    background: #d9d7cf;
+}
+
+.destination-card.large .destination-image {
+    height: 390px;
+}
+
+.destination-image img {
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform .6s ease;
+}
+
+.destination-card:hover
+.destination-image img {
+    transform: scale(1.05);
+}
+
+.card-number {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    width: 38px;
+    height: 38px;
+
     display: flex;
 
-    gap: 22px;
+    align-items: center;
+    justify-content: center;
 
-    padding: 30px;
+    background:
+        rgba(255,255,255,.92);
 
-    background-color: var(--white);
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-    border: 1px solid var(--border);
-
-    transition: all 0.3s ease;
+    font-size: 13px;
 }
 
-.event-card:hover {
-    transform: translateY(-5px);
-
-    border-color: var(--gold);
+.destination-content {
+    padding: 25px 26px 28px;
 }
 
+.destination-content > span {
+    font-size: 8px;
 
-/* EVENT DATE */
+    font-weight: 700;
 
-.event-date {
-    min-width: 55px;
+    letter-spacing: 2px;
 
-    text-align: center;
+    color: var(--gold);
+}
+
+.destination-content h3 {
+    margin-top: 8px;
+
+    font-size: 25px;
+}
+
+.destination-content p {
+    margin-top: 8px;
+
+    max-width: 450px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.destination-content a {
+    display: inline-block;
+
+    margin-top: 17px;
 
     color: var(--green);
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   EVENTS
+================================================== */
+
+.events {
+    background: #efede6;
+}
+
+.event-list {
+    border-top:
+        1px solid var(--border);
+}
+
+.event-item {
+    display: grid;
+
+    grid-template-columns:
+        110px
+        1fr
+        50px;
+
+    gap: 40px;
+
+    align-items: center;
+
+    padding: 28px 10px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    transition:
+        padding .3s ease,
+        background .3s ease;
+}
+
+.event-item:hover {
+    padding-left: 20px;
+
+    background:
+        rgba(255,255,255,.4);
+}
+
+.event-date {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
 }
 
 .event-date strong {
-    display: block;
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-    font-size: 31px;
-    font-weight: 500;
+    font-size: 38px;
+
+    font-weight: 400;
 
     line-height: 1;
 }
 
 .event-date span {
-    display: block;
+    font-size: 9px;
+
+    letter-spacing: 2px;
 
     color: var(--gold);
+}
 
-    font-size: 10px;
+.event-info > span {
+    font-size: 8px;
+
     font-weight: 700;
 
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 
+    color: var(--gold);
+}
+
+.event-info h3 {
     margin-top: 5px;
-}
-
-
-/* EVENT CONTENT */
-
-.event-content {
-    flex: 1;
-}
-
-.event-content small {
-    color: var(--gold);
-
-    font-size: 10px;
-    font-weight: 700;
-
-    letter-spacing: 2px;
-}
-
-.event-content h3 {
-    color: var(--green);
-
-    font-size: 18px;
-
-    line-height: 1.35;
-
-    margin: 10px 0;
-}
-
-.event-content p {
-    color: var(--gray);
-
-    font-size: 13px;
-
-    line-height: 1.7;
-
-    margin-bottom: 20px;
-}
-
-.event-content a {
-    color: var(--green);
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.event-content a:hover {
-    color: var(--gold);
-}
-
-
-/* ==================================================
-   9. KULINER
-================================================== */
-
-.kuliner {
-    padding: 100px 0;
-
-    background-color: var(--white);
-}
-
-.kuliner-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 18px;
-}
-
-.kuliner-card {
-    padding: 32px 28px;
-
-    min-height: 300px;
-
-    background-color: var(--cream);
-
-    border: 1px solid var(--border);
-
-    transition: all 0.3s ease;
-}
-
-.kuliner-card:hover {
-    transform: translateY(-5px);
-
-    border-color: var(--gold);
-}
-
-.kuliner-card > span {
-    color: var(--gold);
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.kuliner-card h3 {
-    color: var(--green);
-
-    font-size: 22px;
-
-    margin-top: 45px;
-    margin-bottom: 14px;
-}
-
-.kuliner-card p {
-    color: var(--gray);
-
-    font-size: 13px;
-
-    line-height: 1.75;
-
-    margin-bottom: 25px;
-}
-
-.kuliner-card a {
-    color: var(--green);
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.kuliner-card a:hover {
-    color: var(--gold);
-}
-
-
-/* ==================================================
-   10. BUDAYA
-================================================== */
-
-.budaya {
-    padding: 100px 0;
-
-    background-color: var(--cream);
-}
-
-.budaya-content {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 80px;
-
-    align-items: center;
-}
-
-
-/* LEFT */
-
-.budaya-text h2 {
-    color: var(--green);
-
-    font-size: 48px;
-
-    font-weight: 500;
-
-    line-height: 1.1;
-
-    margin-bottom: 25px;
-}
-
-.budaya-text > p:not(.section-subtitle) {
-    max-width: 520px;
-
-    color: var(--gray);
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    margin-bottom: 30px;
-}
-
-
-/* RIGHT LIST */
-
-.budaya-list {
-    border-top: 1px solid var(--border);
-}
-
-.budaya-item {
-    display: grid;
-
-    grid-template-columns: 45px 1fr;
-
-    gap: 15px;
-
-    padding: 25px 0;
-
-    border-bottom: 1px solid var(--border);
-}
-
-.budaya-item > span {
-    color: var(--gold);
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.budaya-item h3 {
-    color: var(--green);
-
-    font-size: 17px;
-
-    margin-bottom: 7px;
-}
-
-.budaya-item p {
-    color: var(--gray);
-
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
-
-/* ==================================================
-   11. EKRAF
-================================================== */
-
-.ekraf {
-    padding: 100px 0;
-
-    background-color: var(--white);
-}
-
-.ekraf-grid {
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    border-top: 1px solid var(--border);
-    border-left: 1px solid var(--border);
-}
-
-.ekraf-card {
-    min-height: 230px;
-
-    padding: 32px;
-
-    border-right: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-
-    transition: background-color 0.3s ease;
-}
-
-.ekraf-card:hover {
-    background-color: var(--cream);
-}
-
-.ekraf-card > span {
-    color: var(--gold);
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.ekraf-card h3 {
-    color: var(--green);
-
-    font-size: 21px;
-
-    margin-top: 38px;
-    margin-bottom: 12px;
-}
-
-.ekraf-card p {
-    color: var(--gray);
-
-    font-size: 13px;
-
-    line-height: 1.7;
-}
-
-
-/* ==================================================
-   12. BERITA
-================================================== */
-
-.berita {
-    padding: 100px 0;
-
-    background-color: var(--cream);
-}
-
-.berita-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 20px;
-}
-
-.berita-card {
-    padding: 35px;
-
-    background-color: var(--white);
-
-    border: 1px solid var(--border);
-
-    transition: all 0.3s ease;
-}
-
-.berita-card:hover {
-    transform: translateY(-5px);
-
-    border-color: var(--gold);
-}
-
-.berita-card small {
-    color: var(--gold);
-
-    font-size: 10px;
-    font-weight: 700;
-
-    letter-spacing: 2px;
-}
-
-.berita-card h3 {
-    color: var(--green);
 
     font-size: 20px;
-
-    line-height: 1.4;
-
-    margin: 15px 0;
 }
 
-.berita-card p {
-    color: var(--gray);
+.event-info p {
+    margin-top: 4px;
+
+    color: var(--muted);
 
     font-size: 13px;
-
-    line-height: 1.75;
-
-    margin-bottom: 25px;
 }
 
-.berita-card a {
-    color: var(--green);
+.event-arrow {
+    width: 40px;
+    height: 40px;
 
-    font-size: 12px;
-    font-weight: 700;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid var(--border);
+
+    text-decoration: none;
+
+    transition:
+        background .25s ease,
+        color .25s ease;
 }
 
-.berita-card a:hover {
-    color: var(--gold);
-}
+.event-item:hover .event-arrow {
+    color: white;
 
-
-/* ==================================================
-   13. PETA
-================================================== */
-
-.peta {
-    position: relative;
-
-    padding: 100px 0;
-
-    background-color: var(--white);
-}
-
-.peta .container {
-    position: relative;
-
-    overflow: hidden;
-
-    min-height: 400px;
-
-    background-color: var(--green);
-}
-
-
-/* DECORATIVE MAP */
-
-.peta .container::before {
-    content: "";
-
-    position: absolute;
-
-    width: 450px;
-    height: 450px;
-
-    right: -130px;
-    top: -80px;
-
-    border: 1px solid rgba(255, 255, 255, 0.15);
-
-    border-radius: 50%;
-}
-
-.peta .container::after {
-    content: "";
-
-    position: absolute;
-
-    width: 280px;
-    height: 280px;
-
-    right: -45px;
-    top: 5px;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-
-    border-radius: 50%;
-}
-
-
-/* CONTENT */
-
-.peta-content {
-    position: relative;
-
-    z-index: 2;
-
-    max-width: 570px;
-
-    padding: 65px;
-}
-
-.peta-content .section-subtitle {
-    color: var(--gold-light);
-}
-
-.peta-content h2 {
-    color: var(--white);
-
-    font-size: 43px;
-
-    font-weight: 500;
-
-    line-height: 1.15;
-
-    margin-bottom: 20px;
-}
-
-.peta-content > p:not(.section-subtitle) {
-    color: #d0d5d0;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    margin-bottom: 30px;
-}
-
-.peta-content .btn-primary {
-    background-color: var(--white);
-
-    color: var(--green);
-
-    border-color: var(--white);
-}
-
-.peta-content .btn-primary:hover {
-    background-color: var(--cream-dark);
-
-    border-color: var(--cream-dark);
+    background: var(--green);
 }
 
 
 /* ==================================================
-   14. FOOTER
+   CULINARY
 ================================================== */
 
-.footer {
-    padding: 70px 0 25px;
+.culinary {
+    background: var(--green);
 
-    background-color: var(--green-dark);
-
-    color: var(--white);
+    color: white;
 }
 
-.footer-content {
+.culinary .mini-title {
+    color: #d3ad59;
+}
+
+.culinary-header {
     display: grid;
 
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr .7fr;
 
-    gap: 45px;
+    gap: 60px;
 
-    padding-bottom: 50px;
+    align-items: end;
+
+    margin-bottom: 55px;
 }
 
+.culinary-header h2 {
+    margin-top: 14px;
 
-/* FOOTER BRAND */
+    font-size:
+        clamp(42px, 5vw, 68px);
 
-.footer-logo {
-    color: var(--white);
+    line-height: .95;
 
-    font-size: 21px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
+    letter-spacing: -2px;
 }
 
-.footer-logo span {
+.culinary-header h2 i {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
     font-weight: 400;
 }
 
-.footer-brand p {
-    max-width: 300px;
+.culinary-header > p {
+    color: rgba(255,255,255,.65);
 
-    color: #bfc6bf;
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.culinary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top:
+        1px solid rgba(255,255,255,.16);
+
+    border-bottom:
+        1px solid rgba(255,255,255,.16);
+}
+
+.food-card {
+    min-height: 330px;
+
+    padding: 30px 28px;
+
+    border-right:
+        1px solid rgba(255,255,255,.16);
+
+    transition:
+        background .3s ease;
+}
+
+.food-card:last-child {
+    border-right: 0;
+}
+
+.food-card:hover,
+.food-card.featured {
+    background:
+        rgba(255,255,255,.06);
+}
+
+.food-number {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #d3ad59;
+
+    font-size: 15px;
+}
+
+.food-card h3 {
+    margin-top: 90px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 30px;
+
+    font-weight: 400;
+}
+
+.food-card p {
+    margin-top: 12px;
+
+    color: rgba(255,255,255,.62);
 
     font-size: 13px;
 
     line-height: 1.7;
-
-    margin-top: 15px;
 }
 
+.food-card a {
+    display: inline-block;
 
-/* FOOTER MENU */
+    margin-top: 25px;
 
-.footer-menu h3,
-.footer-info h3 {
-    color: var(--gold-light);
+    color: white;
 
-    font-size: 12px;
-    font-weight: 700;
-
-    letter-spacing: 1px;
-
-    margin-bottom: 20px;
-}
-
-.footer-menu a {
-    display: block;
-
-    color: #c4cbc4;
-
-    font-size: 13px;
-
-    margin-bottom: 10px;
-
-    transition: color 0.3s ease;
-}
-
-.footer-menu a:hover {
-    color: var(--white);
-}
-
-
-/* FOOTER INFO */
-
-.footer-info p {
-    color: #c4cbc4;
-
-    font-size: 13px;
-
-    margin-bottom: 5px;
-}
-
-
-/* FOOTER BOTTOM */
-
-.footer-bottom {
-    display: flex;
-
-    justify-content: space-between;
-
-    gap: 20px;
-
-    padding-top: 25px;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.footer-bottom p {
-    color: #aeb6ae;
+    text-decoration: none;
 
     font-size: 11px;
 }
 
 
 /* ==================================================
-   15. TABLET
+   CULTURE
+================================================== */
+
+.culture {
+    background: #f7f5ef;
+}
+
+.culture-grid {
+    display: grid;
+
+    grid-template-columns:
+        .85fr
+        1fr;
+
+    gap: 100px;
+}
+
+.culture-main h2 {
+    margin-top: 15px;
+
+    font-size:
+        clamp(44px, 5vw, 68px);
+
+    line-height: .98;
+
+    letter-spacing: -2px;
+}
+
+.culture-main h2 i {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: 400;
+}
+
+.culture-main > p {
+    max-width: 490px;
+
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.85;
+}
+
+.culture-main .button {
+    margin-top: 30px;
+}
+
+.culture-items {
+    border-top:
+        1px solid var(--border);
+}
+
+.culture-items article {
+    display: grid;
+
+    grid-template-columns: 50px 1fr;
+
+    gap: 25px;
+
+    padding: 25px 0;
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.culture-items article > span {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: var(--gold);
+
+    font-size: 14px;
+}
+
+.culture-items h3 {
+    font-size: 17px;
+}
+
+.culture-items p {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   EKRAF
+================================================== */
+
+.creative {
+    background: #efede6;
+}
+
+.creative-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top:
+        1px solid var(--border);
+
+    border-bottom:
+        1px solid var(--border);
+}
+
+.creative-grid article {
+    min-height: 270px;
+
+    padding: 28px;
+
+    border-right:
+        1px solid var(--border);
+
+    transition:
+        background .3s ease;
+}
+
+.creative-grid article:last-child {
+    border-right: 0;
+}
+
+.creative-grid article:hover {
+    background: white;
+}
+
+.creative-grid article > span {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: var(--gold);
+
+    font-size: 14px;
+}
+
+.creative-grid h3 {
+    margin-top: 75px;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 26px;
+
+    font-weight: 400;
+}
+
+.creative-grid p {
+    margin-top: 10px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   NEWS
+================================================== */
+
+.news {
+    background: var(--cream);
+}
+
+.news-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.news-card {
+    min-height: 330px;
+
+    padding: 30px;
+
+    border:
+        1px solid var(--border);
+
+    background: white;
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 15px 40px rgba(23,60,44,.08);
+}
+
+.news-top {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+.news-top span {
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: var(--gold);
+}
+
+.news-top small {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 14px;
+
+    color: #9a9f9b;
+}
+
+.news-card h3 {
+    margin-top: 65px;
+
+    font-size: 23px;
+
+    line-height: 1.25;
+}
+
+.news-card p {
+    margin-top: 13px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.75;
+}
+
+.news-card a {
+    display: inline-block;
+
+    margin-top: 22px;
+
+    font-size: 11px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   MAP
+================================================== */
+
+.map-section {
+    background: #e9e6dc;
+
+    overflow: hidden;
+}
+
+.map-inner {
+    min-height: 530px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+}
+
+.map-text {
+    position: relative;
+    z-index: 2;
+}
+
+.map-text h2 {
+    margin-top: 15px;
+
+    font-size:
+        clamp(46px, 5vw, 70px);
+
+    line-height: .95;
+
+    letter-spacing: -2px;
+}
+
+.map-text h2 i {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: 400;
+}
+
+.map-text p {
+    max-width: 450px;
+
+    margin-top: 23px;
+
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.8;
+}
+
+.map-text .button {
+    margin-top: 28px;
+}
+
+.map-graphic {
+    position: relative;
+
+    width: 430px;
+    height: 430px;
+
+    justify-self: center;
+}
+
+.map-ring {
+    position: absolute;
+
+    border:
+        1px solid rgba(23,60,44,.15);
+
+    border-radius: 50%;
+}
+
+.ring-one {
+    inset: 0;
+}
+
+.ring-two {
+    inset: 60px;
+}
+
+.ring-three {
+    inset: 120px;
+}
+
+.map-center {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 130px;
+    height: 130px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.map-center span {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 32px;
+}
+
+.map-center small {
+    margin-top: 3px;
+
+    font-size: 7px;
+
+    letter-spacing: 2px;
+
+    opacity: .7;
+}
+
+.map-pin {
+    position: absolute;
+
+    width: 9px;
+    height: 9px;
+
+    background: var(--gold);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 5px rgba(179,138,53,.12);
+}
+
+.pin-one {
+    top: 23%;
+    left: 48%;
+}
+
+.pin-two {
+    top: 42%;
+    right: 12%;
+}
+
+.pin-three {
+    bottom: 18%;
+    left: 30%;
+}
+
+.pin-four {
+    bottom: 31%;
+    right: 29%;
+}
+
+
+/* ==================================================
+   CLOSING
+================================================== */
+
+.closing {
+    padding: 130px 0;
+
+    text-align: center;
+
+    background: var(--cream);
+}
+
+.closing > .container > span {
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: var(--gold);
+}
+
+.closing h2 {
+    margin-top: 20px;
+
+    font-size:
+        clamp(50px, 7vw, 90px);
+
+    line-height: .92;
+
+    letter-spacing: -3px;
+}
+
+.closing h2 i {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-weight: 400;
+}
+
+.closing p {
+    margin-top: 25px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.footer {
+    padding: 70px 0 25px;
+
+    background: #102f23;
+
+    color: white;
+}
+
+.footer-grid {
+    display: grid;
+
+    grid-template-columns:
+        2fr
+        1fr
+        1fr
+        1.2fr;
+
+    gap: 50px;
+
+    padding-bottom: 55px;
+}
+
+.footer-brand strong {
+    display: block;
+
+    font-size: 19px;
+
+    letter-spacing: 2px;
+}
+
+.footer-brand > span {
+    display: block;
+
+    margin-top: 7px;
+
+    font-size: 8px;
+
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,.5);
+}
+
+.footer-brand p {
+    max-width: 280px;
+
+    margin-top: 22px;
+
+    color: rgba(255,255,255,.55);
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+.footer-column {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+}
+
+.footer-column h4 {
+    margin-bottom: 17px;
+
+    color: #d1aa59;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.footer-column a,
+.footer-column p {
+    margin-bottom: 8px;
+
+    color: rgba(255,255,255,.6);
+
+    text-decoration: none;
+
+    font-size: 12px;
+}
+
+.footer-column a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 22px;
+
+    border-top:
+        1px solid rgba(255,255,255,.12);
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 9px;
+
+    letter-spacing: .5px;
+}
+
+.footer-bottom strong {
+    color: rgba(255,255,255,.7);
+}
+
+
+/* ==================================================
+   RESPONSIVE — TABLET
 ================================================== */
 
 @media (max-width: 1000px) {
 
-    /* NAVBAR */
-
-    .nav-menu {
-        gap: 15px;
+    .nav-links {
+        gap: 18px;
     }
 
-    .nav-menu a {
+    .nav-links a {
         font-size: 12px;
     }
 
+    .hero-grid {
+        grid-template-columns: 1fr .75fr;
 
-    /* DESTINASI */
+        gap: 40px;
+    }
 
-    .destinasi-grid {
+    .hero-photo {
+        height: 450px;
+    }
+
+    .hero-badge {
+        right: -15px;
+    }
+
+    .destination-card,
+    .destination-card.large {
+        grid-column: span 6;
+    }
+
+    .culinary-grid,
+    .creative-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
-
-    /* KULINER */
-
-    .kuliner-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .food-card:nth-child(2),
+    .creative-grid article:nth-child(2) {
+        border-right: 0;
     }
 
-
-    /* EKRAF */
-
-    .ekraf-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .food-card:nth-child(-n+2),
+    .creative-grid article:nth-child(-n+2) {
+        border-bottom:
+            1px solid rgba(255,255,255,.16);
     }
 
-
-    /* EVENT */
-
-    .event-grid {
-        grid-template-columns: 1fr;
+    .creative-grid article:nth-child(-n+2) {
+        border-bottom:
+            1px solid var(--border);
     }
 
-
-    /* BERITA */
-
-    .berita-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-
-    /* BUDAYA */
-
-    .budaya-content {
+    .culture-grid {
         gap: 50px;
-    }
-
-
-    /* FOOTER */
-
-    .footer-content {
-        grid-template-columns: 2fr 1fr 1fr;
-    }
-
-    .footer-info {
-        grid-column: 1 / -1;
     }
 
 }
 
 
 /* ==================================================
-   16. MOBILE
+   RESPONSIVE — MOBILE
 ================================================== */
 
-@media (max-width: 768px) {
-
-    /* CONTAINER */
+@media (max-width: 760px) {
 
     .container {
-        width: 88%;
+        width:
+            min(
+                calc(100% - 32px),
+                var(--container)
+            );
+    }
+
+    .section {
+        padding: 75px 0;
     }
 
 
-    /* NAVBAR */
+    /* NAV */
 
     .navbar {
-        padding: 20px 0;
-    }
-
-    .logo {
-        font-size: 18px;
+        height: 72px;
     }
 
     .menu-toggle {
-        display: block;
-
-        position: relative;
-
-        z-index: 1002;
+        display: flex;
     }
 
-
-    /* MOBILE NAVIGATION */
-
-    .nav-menu {
+    .nav-links {
         position: fixed;
 
-        top: 0;
-        right: 0;
-
-        width: 100%;
-        height: 100vh;
-
-        background-color: var(--cream);
+        left: 16px;
+        right: 16px;
+        top: 82px;
 
         display: flex;
-
         flex-direction: column;
 
-        justify-content: center;
-        align-items: center;
+        align-items: stretch;
 
-        gap: 24px;
+        gap: 0;
 
-        transform: translateX(100%);
+        padding: 12px;
 
-        transition: transform 0.35s ease;
+        background: #f7f5ef;
 
-        z-index: 1001;
+        border:
+            1px solid var(--border);
+
+        box-shadow:
+            0 20px 45px rgba(0,0,0,.08);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(-10px);
+
+        transition: .3s ease;
     }
 
-    .nav-menu.show {
-        transform: translateX(0);
+    .nav-links.open {
+        top: 82px;
+
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
     }
 
-    .nav-menu a {
-        font-size: 17px;
+    .nav-links a {
+        padding: 14px;
+
+        border-bottom:
+            1px solid var(--border);
+
+        font-size: 13px;
+    }
+
+    .nav-links a:last-child {
+        border-bottom: 0;
+    }
+
+    .nav-links a::after {
+        display: none;
     }
 
 
     /* HERO */
 
     .hero {
-        min-height: 100vh;
-
-        align-items: flex-start;
+        min-height: auto;
     }
 
-    .hero-content {
-        padding-top: 185px;
-    }
+    .hero-grid {
+        grid-template-columns: 1fr;
 
-    .hero-subtitle {
-        font-size: 9px;
+        gap: 50px;
 
-        letter-spacing: 2px;
-
-        line-height: 1.6;
-
-        margin-bottom: 15px;
+        padding: 65px 0 75px;
     }
 
     .hero h1 {
-        font-size: 46px;
+        font-size:
+            clamp(55px, 16vw, 80px);
 
-        line-height: 1.08;
-
-        margin-bottom: 22px;
+        letter-spacing: -3px;
     }
 
     .hero-description {
         max-width: 100%;
 
         font-size: 14px;
-
-        line-height: 1.7;
-
-        margin-bottom: 28px;
     }
 
-    .hero-content::after {
-        bottom: -80px;
+    .hero-buttons {
+        align-items: flex-start;
 
-        width: 70px;
-    }
-
-    .hero::before {
-        width: 330px;
-        height: 330px;
-
-        right: -190px;
-        top: 160px;
-    }
-
-    .hero::after {
-        width: 220px;
-        height: 220px;
-
-        right: -120px;
-        top: 215px;
-    }
-
-
-    /* SECTION */
-
-    .destinasi,
-    .event,
-    .kuliner,
-    .budaya,
-    .ekraf,
-    .berita,
-    .peta {
-        padding: 75px 0;
-    }
-
-
-    /* SECTION TITLE */
-
-    .section-title {
-        margin-bottom: 35px;
-    }
-
-    .section-title h2 {
-        font-size: 34px;
-    }
-
-    .section-title span {
-        font-size: 14px;
-    }
-
-
-    /* DESTINASI */
-
-    .destinasi-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .destinasi-card {
-        min-height: auto;
-
-        padding: 28px;
-    }
-
-    .destinasi-number {
-        margin-bottom: 35px;
-    }
-
-
-    /* EVENT */
-
-    .event-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .event-card {
         flex-direction: column;
 
-        gap: 15px;
-
-        padding: 28px;
+        gap: 18px;
     }
 
-    .event-date {
-        text-align: left;
+    .hero-signature {
+        margin-top: 40px;
+    }
+
+    .hero-visual {
+        width: calc(100% - 20px);
+
+        max-width: 500px;
+
+        justify-self: start;
+    }
+
+    .hero-photo {
+        height: 400px;
+    }
+
+    .hero-badge {
+        width: 85px;
+        height: 85px;
+
+        right: -10px;
+        bottom: 25px;
+    }
+
+    .hero-badge strong {
+        font-size: 22px;
+    }
+
+    .hero-pattern {
+        right: -330px;
+        top: 34%;
+
+        width: 500px;
+        height: 500px;
     }
 
 
-    /* KULINER */
+    /* INTRO */
 
-    .kuliner-grid {
+    .intro-grid {
+        display: block;
+    }
+
+    .section-index {
+        margin-bottom: 25px;
+    }
+
+    .intro-text {
+        padding-top: 30px;
+    }
+
+
+    /* HEADINGS */
+
+    .section-heading {
+        display: block;
+
+        margin-bottom: 38px;
+    }
+
+    .section-heading > p {
+        margin-top: 20px;
+
+        justify-self: auto;
+    }
+
+
+    /* DESTINATIONS */
+
+    .destination-grid {
+        display: grid;
+
         grid-template-columns: 1fr;
     }
 
-    .kuliner-card {
-        min-height: auto;
+    .destination-card,
+    .destination-card.large {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    .destination-image,
+    .destination-card.large .destination-image {
+        height: 250px;
     }
 
 
-    /* BUDAYA */
+    /* EVENTS */
 
-    .budaya-content {
+    .event-item {
+        grid-template-columns:
+            70px
+            1fr;
+
+        gap: 20px;
+
+        padding: 24px 0;
+    }
+
+    .event-arrow {
+        display: none;
+    }
+
+    .event-date strong {
+        font-size: 30px;
+    }
+
+    .event-info h3 {
+        font-size: 17px;
+    }
+
+    .event-info p {
+        font-size: 12px;
+    }
+
+
+    /* CULINARY */
+
+    .culinary-header {
+        display: block;
+    }
+
+    .culinary-header > p {
+        margin-top: 22px;
+    }
+
+    .culinary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .food-card {
+        min-height: 250px;
+
+        border-right: 0;
+
+        border-bottom:
+            1px solid rgba(255,255,255,.16);
+    }
+
+    .food-card:last-child {
+        border-bottom: 0;
+    }
+
+    .food-card h3 {
+        margin-top: 55px;
+    }
+
+
+    /* CULTURE */
+
+    .culture-grid {
         grid-template-columns: 1fr;
 
-        gap: 50px;
-    }
-
-    .budaya-text h2 {
-        font-size: 38px;
+        gap: 55px;
     }
 
 
     /* EKRAF */
 
-    .ekraf-grid {
+    .creative-grid {
         grid-template-columns: 1fr;
     }
 
-    .ekraf-card {
+    .creative-grid article {
+        min-height: 220px;
+
+        border-right: 0;
+
+        border-bottom:
+            1px solid var(--border);
+    }
+
+    .creative-grid article:last-child {
+        border-bottom: 0;
+    }
+
+    .creative-grid h3 {
+        margin-top: 55px;
+    }
+
+
+    /* NEWS */
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .news-card {
+        min-height: 290px;
+    }
+
+    .news-card h3 {
+        margin-top: 50px;
+    }
+
+
+    /* MAP */
+
+    .map-inner {
         min-height: auto;
 
-        padding: 28px;
-    }
-
-
-    /* BERITA */
-
-    .berita-grid {
         grid-template-columns: 1fr;
+
+        gap: 50px;
+
+        padding: 75px 0;
+    }
+
+    .map-graphic {
+        width: 320px;
+        height: 320px;
+
+        justify-self: center;
+    }
+
+    .map-center {
+        width: 105px;
+        height: 105px;
+    }
+
+    .map-center span {
+        font-size: 25px;
     }
 
 
-    /* PETA */
+    /* CLOSING */
 
-    .peta .container {
-        min-height: 430px;
+    .closing {
+        padding: 90px 0;
     }
 
-    .peta-content {
-        padding: 45px 30px;
-    }
-
-    .peta-content h2 {
-        font-size: 34px;
-    }
-
-    .peta .container::before {
-        width: 350px;
-        height: 350px;
-
-        right: -200px;
-    }
-
-    .peta .container::after {
-        width: 220px;
-        height: 220px;
-
-        right: -130px;
+    .closing h2 {
+        font-size:
+            clamp(48px, 14vw, 72px);
     }
 
 
@@ -1472,22 +2197,21 @@ img {
         padding-top: 55px;
     }
 
-    .footer-content {
-        grid-template-columns: 1fr 1fr;
+    .footer-grid {
+        grid-template-columns:
+            1fr 1fr;
 
-        gap: 35px 25px;
+        gap: 40px 25px;
     }
 
     .footer-brand {
-        grid-column: 1 / -1;
-    }
-
-    .footer-info {
-        grid-column: auto;
+        grid-column: span 2;
     }
 
     .footer-bottom {
         flex-direction: column;
+
+        align-items: flex-start;
 
         gap: 8px;
     }
@@ -1496,1198 +2220,34 @@ img {
 
 
 /* ==================================================
-   17. SMALL MOBILE
+   SMALL MOBILE
 ================================================== */
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
 
-    .container {
-        width: 88%;
-    }
-
-
-    /* LOGO */
-
-    .logo {
-        font-size: 17px;
-    }
-
-
-    /* HERO */
-
-    .hero-content {
-        padding-top: 180px;
-    }
-
-    .hero h1 {
-        font-size: 41px;
-    }
-
-    .hero-subtitle {
-        max-width: 300px;
-
-        font-size: 8px;
-
-        letter-spacing: 1.8px;
-    }
-
-    .hero-description {
-        font-size: 13px;
-    }
-
-
-    /* BUTTON */
-
-    .btn-primary {
-        padding: 14px 23px;
-
-        font-size: 12px;
-    }
-
-
-    /* SECTION */
-
-    .section-title h2 {
-        font-size: 30px;
-    }
-
-
-    /* CARDS */
-
-    .destinasi-card,
-    .kuliner-card,
-    .berita-card {
-        padding: 25px;
-    }
-
-
-    /* BUDAYA */
-
-    .budaya-text h2 {
-        font-size: 34px;
-    }
-
-
-    /* PETA */
-
-    .peta .container {
-        width: 88%;
-    }
-
-    .peta-content {
-        padding: 40px 25px;
-    }
-
-    .peta-content h2 {
-        font-size: 30px;
-    }
-
-
-    /* FOOTER */
-
-    .footer-content {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-brand,
-    .footer-info {
-        grid-column: auto;
-    }
-
-}
-/* ==================================================
-   DESTINASI IMAGE CARD
-================================================== */
-
-.destinasi-image-card {
-    padding: 0;
-    overflow: hidden;
-}
-
-.destinasi-image {
-    width: 100%;
-    height: 190px;
-    overflow: hidden;
-}
-
-.destinasi-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.destinasi-image-card:hover .destinasi-image img {
-    transform: scale(1.05);
-}
-
-.destinasi-info {
-    padding: 25px;
-}
-
-.destinasi-info .destinasi-number {
-    display: block;
-    margin-bottom: 18px;
-}
-
-.destinasi-info h3 {
-    margin-bottom: 12px;
-}
-
-.destinasi-info p {
-    margin-bottom: 20px;
-}
-
-
-/* MOBILE */
-
-@media (max-width: 600px) {
-
-    .destinasi-image {
-        height: 210px;
-    }
-
-    .destinasi-info {
-        padding: 25px;
-    }
-
-}
-/* ==================================================
-   DESTINASI IMAGE CARD
-================================================== */
-
-.destinasi-image-card {
-    padding: 0;
-    overflow: hidden;
-}
-
-.destinasi-image {
-    width: 100%;
-    height: 190px;
-    overflow: hidden;
-}
-
-.destinasi-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.destinasi-image-card:hover .destinasi-image img {
-    transform: scale(1.05);
-}
-
-.destinasi-info {
-    padding: 25px;
-}
-
-.destinasi-info .destinasi-number {
-    display: block;
-    margin-bottom: 18px;
-}
-
-.destinasi-info h3 {
-    margin-bottom: 12px;
-}
-
-.destinasi-info p {
-    margin-bottom: 20px;
-}
-
-@media (max-width: 600px) {
-
-    .destinasi-image {
-        height: 210px;
-    }
-
-    .destinasi-info {
-        padding: 25px;
-    }
-
-}
-/* ==================================================
-   JOGJA TOURISM - FINAL POLISH
-   by Wasisyoga
-================================================== */
-
-
-/* ==================================================
-   LOGO
-================================================== */
-
-.logo {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    line-height: 1;
-}
-
-.logo-main {
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-}
-
-.logo-by {
-    margin-top: 5px;
-    font-size: 9px;
-    letter-spacing: 2px;
-    opacity: .65;
-    text-transform: uppercase;
-}
-
-
-/* ==================================================
-   HERO
-================================================== */
-
-.hero {
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-}
-
-.hero-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 11px;
-    letter-spacing: 2px;
-    font-weight: 600;
-}
-
-.hero-label span {
-    width: 35px;
-    height: 1px;
-    display: inline-block;
-    background: currentColor;
-    opacity: .5;
-}
-
-.hero h1 {
-    letter-spacing: -2px;
-}
-
-.hero h1 em,
-.section-title h2 em,
-.budaya-text h2 em,
-.peta-content h2 em,
-.cta h2 em {
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: 400;
-}
-
-.hero-actions {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-top: 30px;
-}
-
-.btn-primary span {
-    margin-left: 10px;
-    transition: transform .3s ease;
-}
-
-.btn-primary:hover span {
-    transform: translateX(5px);
-}
-
-.btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    padding: 14px 20px;
-    text-decoration: none;
-    font-size: 13px;
-    border-bottom: 1px solid currentColor;
-    transition: .3s ease;
-}
-
-.btn-secondary:hover {
-    opacity: .65;
-}
-
-.hero-credit {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-top: 65px;
-    font-size: 10px;
-    letter-spacing: 2px;
-    opacity: .55;
-}
-
-.hero-credit small {
-    font-size: 8px;
-    letter-spacing: 1.5px;
-}
-
-
-/* ==================================================
-   INTRO
-================================================== */
-
-.intro {
-    padding: 90px 0;
-}
-
-.intro-grid {
-    display: grid;
-    grid-template-columns: 80px 1.2fr 1fr;
-    gap: 40px;
-    align-items: start;
-}
-
-.intro-number {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 18px;
-    opacity: .5;
-}
-
-.intro-content h2 {
-    margin: 12px 0 0;
-    font-size: clamp(34px, 5vw, 58px);
-    line-height: 1.05;
-}
-
-.intro-content h2 em {
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: 400;
-}
-
-.intro-description {
-    max-width: 450px;
-    line-height: 1.8;
-    font-size: 14px;
-}
-
-.intro-description p + p {
-    margin-top: 18px;
-}
-
-
-/* ==================================================
-   SECTION TITLE
-================================================== */
-
-.section-title h2 {
-    line-height: 1.08;
-}
-
-.section-title > span {
-    display: block;
-    max-width: 620px;
-    margin-top: 18px;
-    line-height: 1.8;
-}
-
-
-/* ==================================================
-   DESTINASI
-================================================== */
-
-.destinasi-image-card {
-    position: relative;
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
-}
-
-.destinasi-image-card:hover {
-    transform: translateY(-6px);
-}
-
-.destinasi-image {
-    position: relative;
-}
-
-.destination-tag {
-    position: absolute;
-    left: 18px;
-    bottom: 18px;
-    padding: 7px 10px;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    background: rgba(255,255,255,.92);
-}
-
-.destinasi-info a {
-    display: inline-flex;
-    gap: 8px;
-    align-items: center;
-}
-
-.destinasi-info a span {
-    transition: transform .3s ease;
-}
-
-.destinasi-info a:hover span {
-    transform: translateX(5px);
-}
-
-
-/* ==================================================
-   EVENT
-================================================== */
-
-.event-card {
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-.event-card:hover {
-    transform: translateY(-5px);
-}
-
-.event-date {
-    flex-shrink: 0;
-}
-
-.event-date strong {
-    line-height: 1;
-}
-
-.event-content small {
-    letter-spacing: 2px;
-}
-
-.section-more {
-    margin-top: 45px;
-    text-align: center;
-}
-
-.section-more a {
-    display: inline-block;
-    padding-bottom: 8px;
-    border-bottom: 1px solid currentColor;
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: .5px;
-}
-
-
-/* ==================================================
-   KULINER
-================================================== */
-
-.kuliner-card {
-    position: relative;
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-.kuliner-card:hover {
-    transform: translateY(-5px);
-}
-
-.kuliner-card > span {
-    display: block;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 14px;
-    opacity: .55;
-    margin-bottom: 28px;
-}
-
-.kuliner-card h3 {
-    font-size: 25px;
-}
-
-.kuliner-card a {
-    display: inline-block;
-    margin-top: 10px;
-    text-decoration: none;
-}
-
-
-/* ==================================================
-   BUDAYA
-================================================== */
-
-.budaya-item {
-    transition: padding-left .3s ease;
-}
-
-.budaya-item:hover {
-    padding-left: 8px;
-}
-
-.budaya-item > span {
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-
-/* ==================================================
-   EKRAF
-================================================== */
-
-.ekraf-card {
-    position: relative;
-    transition:
-        transform .3s ease,
-        border-color .3s ease;
-}
-
-.ekraf-card:hover {
-    transform: translateY(-5px);
-}
-
-.ekraf-card > span {
-    font-family: Georgia, "Times New Roman", serif;
-}
-
-.ekraf-line {
-    width: 35px;
-    height: 1px;
-    margin-top: 28px;
-    background: currentColor;
-    opacity: .4;
-    transition: width .3s ease;
-}
-
-.ekraf-card:hover .ekraf-line {
-    width: 70px;
-}
-
-
-/* ==================================================
-   BERITA
-================================================== */
-
-.berita-card {
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
-}
-
-.berita-card:hover {
-    transform: translateY(-5px);
-}
-
-.berita-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 25px;
-}
-
-.berita-meta span {
-    font-size: 9px;
-    letter-spacing: 2px;
-}
-
-.berita-meta small {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 16px;
-    opacity: .45;
-}
-
-.berita-card h3 {
-    line-height: 1.3;
-}
-
-
-/* ==================================================
-   PETA
-================================================== */
-
-.peta {
-    position: relative;
-    overflow: hidden;
-}
-
-.peta .container {
-    position: relative;
-    min-height: 480px;
-    display: flex;
-    align-items: center;
-}
-
-.peta-content {
-    position: relative;
-    z-index: 2;
-    max-width: 550px;
-}
-
-.peta-content h2 {
-    font-size: clamp(38px, 5vw, 65px);
-    line-height: 1.05;
-}
-
-.peta-content > p:not(.section-subtitle) {
-    max-width: 480px;
-    line-height: 1.8;
-    margin: 22px 0 30px;
-}
-
-.peta-decoration {
-    position: absolute;
-    right: 5%;
-    top: 50%;
-    width: 350px;
-    height: 350px;
-    transform: translateY(-50%);
-    opacity: .2;
-}
-
-.map-circle {
-    position: absolute;
-    inset: 0;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.map-circle::before,
-.map-circle::after {
-    content: "";
-    position: absolute;
-    border: 1px solid currentColor;
-    border-radius: 50%;
-}
-
-.map-circle::before {
-    width: 70%;
-    height: 70%;
-}
-
-.map-circle::after {
-    width: 40%;
-    height: 40%;
-}
-
-.map-circle span {
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 20px;
-    letter-spacing: 4px;
-}
-
-.map-point {
-    position: absolute;
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: currentColor;
-}
-
-.point-1 {
-    top: 18%;
-    left: 42%;
-}
-
-.point-2 {
-    top: 38%;
-    right: 12%;
-}
-
-.point-3 {
-    bottom: 20%;
-    left: 25%;
-}
-
-.point-4 {
-    bottom: 35%;
-    right: 32%;
-}
-
-
-/* ==================================================
-   CTA
-================================================== */
-
-.cta {
-    padding: 120px 0;
-    text-align: center;
-}
-
-.cta-content {
-    max-width: 800px;
-    margin: auto;
-}
-
-.cta-content > p {
-    font-size: 10px;
-    letter-spacing: 3px;
-    margin-bottom: 20px;
-}
-
-.cta h2 {
-    font-size: clamp(45px, 7vw, 80px);
-    line-height: 1;
-    margin: 0;
-}
-
-.cta-content > span {
-    display: block;
-    max-width: 500px;
-    margin: 28px auto 0;
-    line-height: 1.8;
-    font-size: 14px;
-}
-
-
-/* ==================================================
-   FOOTER
-================================================== */
-
-.footer-logo {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-}
-
-.footer-logo strong {
-    font-size: 18px;
-    letter-spacing: 1px;
-}
-
-.footer-logo small {
-    margin-top: 5px;
-    font-size: 9px;
-    letter-spacing: 2px;
-    opacity: .6;
-}
-
-.footer-info small {
-    display: block;
-    margin-top: 20px;
-    opacity: .55;
-}
-
-
-/* ==================================================
-   RESPONSIVE
-================================================== */
-
-@media (max-width: 900px) {
-
-    .intro-grid {
-        grid-template-columns: 50px 1fr;
-    }
-
-    .intro-description {
-        grid-column: 2;
-    }
-
-    .peta-decoration {
-        right: -80px;
-        opacity: .12;
-    }
-
-}
-
-
-@media (max-width: 600px) {
-
-    .logo-main {
+    .brand-title {
         font-size: 16px;
     }
 
-    .logo-by {
-        font-size: 7px;
+    .hero h1 {
+        font-size: 53px;
     }
 
-    .hero-actions {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 12px;
+    .hero-photo {
+        height: 350px;
     }
 
-    .hero-credit {
-        margin-top: 45px;
+    .hero-badge {
+        right: -5px;
     }
 
-    .intro {
-        padding: 65px 0;
+    .destination-content {
+        padding: 22px;
     }
 
-    .intro-grid {
-        display: block;
-    }
-
-    .intro-number {
-        margin-bottom: 20px;
-    }
-
-    .intro-description {
-        margin-top: 25px;
-    }
-
-    .peta .container {
-        min-height: 560px;
-    }
-
-    .peta-decoration {
+    .map-graphic {
         width: 280px;
         height: 280px;
-        right: -70px;
-        top: auto;
-        bottom: -60px;
-        transform: none;
-    }
-
-    .cta {
-        padding: 80px 0;
-    }
-
-    .section-more {
-        margin-top: 30px;
-    }
-
-}
-/* ==================================================
-   FINAL HERO POLISH
-   JOGJA TOURISM
-================================================== */
-
-/* ---------- NAVBAR ---------- */
-
-.navbar {
-    height: 88px;
-}
-
-.navbar-content {
-    min-height: 88px;
-}
-
-.logo-main {
-    font-size: 19px;
-    letter-spacing: 2px;
-}
-
-.logo-by {
-    margin-top: 6px;
-    font-size: 8px;
-    letter-spacing: 2.5px;
-}
-
-
-/* ---------- NAV MENU ---------- */
-
-.nav-menu {
-    gap: 34px;
-}
-
-.nav-menu a {
-    position: relative;
-    font-size: 14px;
-    text-decoration: none;
-    color: inherit;
-    transition: color .25s ease;
-}
-
-.nav-menu a:hover {
-    color: #ad8427;
-}
-
-.nav-menu a.active {
-    color: #ad8427;
-}
-
-.nav-menu a.active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -13px;
-    height: 2px;
-    background: #ad8427;
-}
-
-
-/* ==================================================
-   HERO
-================================================== */
-
-.hero {
-    min-height: calc(100vh - 88px);
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-content {
-    width: 100%;
-    max-width: 1200px;
-    padding-top: 20px;
-    padding-bottom: 55px;
-}
-
-
-/* ---------- LABEL ---------- */
-
-.hero-label {
-    margin-bottom: 22px;
-    font-size: 10px;
-    letter-spacing: 3px;
-    line-height: 1.5;
-    color: #173d2b;
-}
-
-
-/* ---------- MAIN TITLE ---------- */
-
-.hero h1 {
-    max-width: 850px;
-    margin: 0;
-    font-size: clamp(58px, 7vw, 104px);
-    line-height: .98;
-    letter-spacing: -3px;
-    font-weight: 500;
-    color: #173d2b;
-}
-
-.hero h1 em {
-    display: inline-block;
-    margin-left: 4px;
-    font-family: Georgia, "Times New Roman", serif;
-    font-weight: 400;
-    font-style: italic;
-}
-
-
-/* ---------- DESCRIPTION ---------- */
-
-.hero-description {
-    max-width: 610px;
-    margin-top: 30px;
-    font-size: 16px;
-    line-height: 1.85;
-    color: #4f5a55;
-}
-
-
-/* ---------- BUTTON AREA ---------- */
-
-.hero-actions {
-    margin-top: 34px;
-    display: flex;
-    align-items: center;
-    gap: 26px;
-}
-
-
-/* PRIMARY BUTTON */
-
-.btn-primary {
-    background: #173d2b;
-    color: #fff;
-    border: 1px solid #173d2b;
-    padding: 15px 23px;
-    min-height: 50px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition:
-        background .25s ease,
-        transform .25s ease;
-}
-
-.btn-primary:hover {
-    background: #244d3a;
-    transform: translateY(-2px);
-}
-
-
-/* SECONDARY BUTTON */
-
-.btn-secondary {
-    color: #173d2b !important;
-    background: transparent;
-    border-bottom: 1px solid #ad8427;
-    padding: 13px 4px 9px;
-    font-size: 13px;
-    text-decoration: none;
-    transition:
-        color .25s ease,
-        border-color .25s ease;
-}
-
-.btn-secondary:hover {
-    color: #ad8427 !important;
-    border-color: #173d2b;
-}
-
-
-/* ---------- CREDIT ---------- */
-
-.hero-credit {
-    margin-top: 58px;
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    color: #65716b;
-}
-
-.hero-credit span {
-    font-size: 9px;
-    letter-spacing: 2.5px;
-}
-
-.hero-credit small {
-    font-size: 8px;
-    letter-spacing: 1.8px;
-    color: #9a9f9b;
-}
-
-
-/* ==================================================
-   HERO DECORATION
-================================================== */
-
-.hero-decoration {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    right: -110px;
-    top: 50%;
-    transform: translateY(-48%);
-    pointer-events: none;
-    color: #173d2b;
-}
-
-.hero-decoration::before,
-.hero-decoration::after {
-    content: "";
-    position: absolute;
-    border: 1px solid rgba(23, 61, 43, .13);
-    border-radius: 50%;
-}
-
-.hero-decoration::before {
-    width: 100%;
-    height: 100%;
-}
-
-.hero-decoration::after {
-    width: 70%;
-    height: 70%;
-    left: 15%;
-    top: 15%;
-}
-
-.hero-decoration span {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 15px;
-    letter-spacing: 3px;
-    color: #173d2b;
-    white-space: nowrap;
-}
-
-
-/* ==================================================
-   HERO SMALL DETAILS
-================================================== */
-
-.hero::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    background: rgba(23, 61, 43, .08);
-}
-
-
-/* ==================================================
-   RESPONSIVE
-================================================== */
-
-@media (max-width: 1000px) {
-
-    .nav-menu {
-        gap: 20px;
-    }
-
-    .hero-decoration {
-        right: -180px;
-        opacity: .7;
-    }
-
-    .hero h1 {
-        font-size: clamp(55px, 8vw, 82px);
-    }
-
-}
-
-
-@media (max-width: 700px) {
-
-    .navbar {
-        height: 75px;
-    }
-
-    .navbar-content {
-        min-height: 75px;
-    }
-
-    .hero {
-        min-height: calc(100vh - 75px);
-        align-items: flex-start;
-    }
-
-    .hero-content {
-        padding-top: 75px;
-        padding-bottom: 45px;
-    }
-
-    .hero-label {
-        font-size: 8px;
-        letter-spacing: 2px;
-        max-width: 330px;
-    }
-
-    .hero h1 {
-        max-width: 100%;
-        font-size: clamp(47px, 13vw, 68px);
-        line-height: 1;
-        letter-spacing: -2px;
-    }
-
-    .hero-description {
-        max-width: 100%;
-        margin-top: 25px;
-        font-size: 14px;
-        line-height: 1.75;
-    }
-
-    .hero-actions {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 16px;
-        margin-top: 28px;
-    }
-
-    .hero-credit {
-        margin-top: 45px;
-    }
-
-    .hero-decoration {
-        width: 300px;
-        height: 300px;
-        right: -150px;
-        top: auto;
-        bottom: -70px;
-        transform: none;
-        opacity: .5;
-    }
-
-    .hero-decoration span {
-        display: none;
     }
 
 }
