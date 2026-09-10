@@ -28,14 +28,8 @@ body {
     padding: 25px 0;
 }
 
-.navbar-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 .logo {
-    color: white;
+    color: #1f3d2b;
     text-decoration: none;
     font-size: 22px;
     font-weight: 700;
@@ -46,13 +40,8 @@ body {
     font-weight: 400;
 }
 
-.nav-menu {
-    display: flex;
-    gap: 25px;
-}
-
 .nav-menu a {
-    color: white;
+    color: #1f3d2b;
     text-decoration: none;
     font-size: 14px;
     transition: 0.3s;
@@ -60,7 +49,8 @@ body {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: #d6b36a;
+    color: #b08d3c;
+
 }
 
 .menu-toggle {
@@ -81,22 +71,16 @@ body {
     position: relative;
     min-height: 100vh;
 
-    background-image: url("../assets/tugu-yogyakarta.jpg");
-
-    background-size: cover;
-    background-position: center;
+    background: #f7f7f2;
 
     display: flex;
     align-items: center;
 
-    color: white;
+    color: #1f3d2b;
 }
 
 .hero-overlay {
-    position: absolute;
-    inset: 0;
-
-    background: rgba(0, 0, 0, 0.48);
+    display: none;
 }
 
 .hero-content {
@@ -131,20 +115,19 @@ body {
 
     padding: 14px 28px;
 
-    background: #c9a45c;
+    background: #1f3d2b;
     color: white;
 
     text-decoration: none;
-    border-radius: 3px;
+    border-radius: 4px;
 
     font-size: 14px;
     transition: 0.3s;
 }
 
 .btn-primary:hover {
-    background: #ad8845;
+    background: #315c42;
 }
-
 
 /* =========================
    RESPONSIVE
