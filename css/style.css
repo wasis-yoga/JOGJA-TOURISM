@@ -221,6 +221,8 @@ body {
         width: 88%;
     }
 
+    /* NAVBAR */
+
     .navbar {
         padding: 20px 0;
     }
@@ -229,25 +231,53 @@ body {
         font-size: 18px;
     }
 
+
+    /* HERO */
+
     .hero {
         min-height: 100vh;
+        align-items: flex-start;
     }
 
     .hero-content {
-        padding-top: 80px;
+        padding-top: 190px;
     }
+
+
+    /* SUBTITLE */
 
     .hero-subtitle {
         font-size: 9px;
         letter-spacing: 2px;
+        line-height: 1.6;
+        margin-bottom: 15px;
     }
+
+
+    /* JUDUL */
 
     .hero h1 {
-        font-size: 42px;
+        font-size: 46px;
+        line-height: 1.08;
+        margin-bottom: 22px;
     }
 
+
+    /* DESKRIPSI */
+
     .hero-description {
+        max-width: 100%;
         font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 28px;
+    }
+
+
+    /* TOMBOL */
+
+    .btn-primary {
+        padding: 15px 24px;
+        font-size: 13px;
     }
 
 }
