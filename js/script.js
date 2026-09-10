@@ -1,179 +1,203 @@
 /* ==================================================
    JOGJA TOURISM
-   MAIN JAVASCRIPT
+   by Wasisyoga
 ================================================== */
 
+document.addEventListener("DOMContentLoaded", function () {
 
-/* ==================================================
-   1. MOBILE NAVIGATION
-================================================== */
+    /* ================================================
+       MOBILE NAVIGATION
+    ================================================ */
 
-const menuToggle = document.getElementById("menuToggle");
-const navMenu = document.getElementById("navMenu");
+    const menuToggle =
+        document.getElementById("menuToggle");
 
-
-// Pastikan elemen tersedia
-if (menuToggle && navMenu) {
-
-    // Buka / tutup menu
-    menuToggle.addEventListener("click", function () {
-
-        navMenu.classList.toggle("show");
-
-    });
+    const navLinks =
+        document.getElementById("navLinks");
 
 
-    // Tutup menu ketika link diklik
-    const navLinks = navMenu.querySelectorAll("a");
+    if (menuToggle && navLinks) {
 
-    navLinks.forEach(function (link) {
+        menuToggle.addEventListener("click", function () {
 
-        link.addEventListener("click", function () {
+            navLinks.classList.toggle("open");
 
-            navMenu.classList.remove("show");
+            const isOpen =
+                navLinks.classList.contains("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                isOpen
+            );
 
         });
 
-    });
 
+        /* close menu after clicking */
 
-    // Tutup menu ketika klik di luar menu
-    document.addEventListener("click", function (event) {
+        navLinks.querySelectorAll("a")
+            .forEach(function (link) {
 
-        const clickedInsideMenu =
-            navMenu.contains(event.target);
+                link.addEventListener("click", function () {
 
-        const clickedToggle =
-            menuToggle.contains(event.target);
+                    navLinks.classList.remove("open");
 
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
 
-        if (
-            !clickedInsideMenu &&
-            !clickedToggle &&
-            navMenu.classList.contains("show")
-        ) {
+                });
 
-            navMenu.classList.remove("show");
-
-        }
-
-    });
-
-}
-
-
-/* ==================================================
-   2. NAVBAR SCROLL EFFECT
-================================================== */
-
-const navbar = document.querySelector(".navbar");
-
-
-window.addEventListener("scroll", function () {
-
-    if (!navbar) {
-        return;
-    }
-
-
-    if (window.scrollY > 50) {
-
-        navbar.classList.add("scrolled");
-
-    } else {
-
-        navbar.classList.remove("scrolled");
+            });
 
     }
 
-});
 
 
-/* ==================================================
-   3. ACTIVE NAVIGATION
-================================================== */
+    /* ================================================
+       ACTIVE NAVIGATION
+    ================================================ */
 
-const sections = document.querySelectorAll("main section");
-const navigationLinks = document.querySelectorAll(".nav-menu a");
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navItems =
+        document.querySelectorAll(".nav-links a");
 
 
-window.addEventListener("scroll", function () {
+    const observer =
+        new IntersectionObserver(
 
-    let currentSection = "";
+            function (entries) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        const current =
+                            entry.target.getAttribute("id");
+
+
+                        navItems.forEach(function (item) {
+
+                            item.classList.remove("active");
+
+                            if (
+                                item.getAttribute("href")
+                                === "#" + current
+                            ) {
+
+                                item.classList.add("active");
+
+                            }
+
+                        });
+
+                    }
+
+                });
+
+            },
+
+            {
+                rootMargin:
+                    "-35% 0px -55% 0px"
+            }
+
+        );
 
 
     sections.forEach(function (section) {
 
-        const sectionTop = section.offsetTop - 150;
-        const sectionHeight = section.offsetHeight;
+        observer.observe(section);
+
+    });
+
+
+
+    /* ================================================
+       SCROLL REVEAL
+    ================================================ */
+
+    const revealElements =
+        document.querySelectorAll(
+            ".destination-card, " +
+            ".event-item, " +
+            ".food-card, " +
+            ".culture-items article, " +
+            ".creative-grid article, " +
+            ".news-card"
+        );
+
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            function (entries, observer) {
+
+                entries.forEach(function (entry) {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add(
+                            "visible"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+
+    revealElements.forEach(function (element) {
+
+        element.classList.add("reveal");
+
+        revealObserver.observe(element);
+
+    });
+
+
+
+    /* ================================================
+       CLOSE MENU WHEN CLICK OUTSIDE
+    ================================================ */
+
+    document.addEventListener("click", function (event) {
+
+        if (!navLinks || !menuToggle) {
+            return;
+        }
+
+
+        const clickedInsideNav =
+            navLinks.contains(event.target);
+
+        const clickedButton =
+            menuToggle.contains(event.target);
+
 
         if (
-            window.scrollY >= sectionTop &&
-            window.scrollY < sectionTop + sectionHeight
+            !clickedInsideNav &&
+            !clickedButton
         ) {
 
-            currentSection = section.getAttribute("id");
-
-        }
-
-    });
-
-
-    navigationLinks.forEach(function (link) {
-
-        link.classList.remove("active");
-
-
-        const href = link.getAttribute("href");
-
-
-        if (href === "#" + currentSection) {
-
-            link.classList.add("active");
+            navLinks.classList.remove("open");
 
         }
 
     });
 
 });
-
-
-/* ==================================================
-   4. CLOSE MOBILE MENU WITH ESC
-================================================== */
-
-document.addEventListener("keydown", function (event) {
-
-    if (event.key === "Escape") {
-
-        if (navMenu) {
-
-            navMenu.classList.remove("show");
-
-        }
-
-    }
-
-});
-
-
-/* ==================================================
-   5. CURRENT YEAR
-================================================== */
-
-const currentYear = document.querySelector(".footer-bottom p");
-
-
-if (currentYear) {
-
-    currentYear.innerHTML =
-        "© " + new Date().getFullYear() + " JOGJA TOURISM";
-
-}
-
-
-/* ==================================================
-   6. PAGE READY
-================================================== */
-
-console.log("JOGJA TOURISM berhasil dijalankan.");
