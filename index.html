@@ -1,1031 +1,286 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="JOGJA TOURISM - Portal Informasi Pariwisata Daerah Istimewa Yogyakarta">
-
+    <meta name="description" content="JOGJA TOURISM — Portal informasi pariwisata Daerah Istimewa Yogyakarta.">
     <meta name="author" content="JOGJA TOURISM by Wasisyoga">
-
-    <title>JOGJA TOURISM | Portal Pariwisata Yogyakarta</title>
-
+    <title>JOGJA TOURISM — Explore the Soul of Yogyakarta</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
-
-<header class="navbar">
-
-    <div class="container navbar-inner">
-
+<header class="navbar" id="navbar">
+    <div class="container nav-inner">
         <a href="#beranda" class="brand">
-
-            <div class="brand-main">
-                JOGJA <span>TOURISM</span>
-            </div>
-
-            <div class="brand-by">
-                BY WASISYOGA
-            </div>
-
+            <strong>JOGJA <span>TOURISM</span></strong>
+            <small>BY WASISYOGA</small>
         </a>
 
-
-        <nav class="nav-menu" id="navMenu">
-
-            <a href="#beranda" class="active">Beranda</a>
-            <a href="#destinasi">Destinasi</a>
-            <a href="#event">Event</a>
-            <a href="#kuliner">Kuliner</a>
-            <a href="#budaya">Budaya</a>
-            <a href="#ekraf">Ekraf</a>
-            <a href="#berita">Berita</a>
-            <a href="#peta">Peta</a>
-
-        </nav>
-
-
-        <button
-            class="menu-toggle"
-            id="menuToggle"
-            type="button"
-            aria-label="Buka menu"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+            <span></span><span></span><span></span>
         </button>
 
+        <nav class="nav-menu" id="navMenu">
+            <a href="#beranda">Beranda</a>
+            <a href="#destinasi">Destinasi</a>
+            <a href="#pengalaman">Pengalaman</a>
+            <a href="#budaya">Budaya</a>
+            <a href="#tentang">Tentang</a>
+        </nav>
+
+        <a href="#destinasi" class="nav-cta">Explore Jogja <span>↗</span></a>
     </div>
-
 </header>
-
 
 <main>
 
-<!-- =========================
-     BERANDA
-========================= -->
-
 <section class="hero" id="beranda">
-
-    <div class="container">
-
-        <div class="hero-content">
-
-            <div class="hero-label">
-                <span></span>
-                PORTAL PARIWISATA
-                <span class="label-line"></span>
-                DAERAH ISTIMEWA YOGYAKARTA
-            </div>
-
-
-            <h1>
-                Explore the Soul
-                <em>of Yogyakarta</em>
-            </h1>
-
-
-            <p class="hero-description">
-                Jelajahi destinasi, budaya, kuliner, event,
-                ekonomi kreatif, dan berbagai pengalaman
-                menarik di Yogyakarta.
+    <div class="hero-pattern"></div>
+    <div class="container hero-inner">
+        <div class="hero-copy">
+            <p class="kicker"><span></span> DAERAH ISTIMEWA YOGYAKARTA</p>
+            <h1>Explore the<br><em>Soul of Jogja.</em></h1>
+            <p class="hero-text">
+                Sebuah perjalanan untuk menemukan destinasi, budaya,
+                kuliner, dan pengalaman yang membuat Yogyakarta selalu
+                ingin dikunjungi kembali.
             </p>
-
-
             <div class="hero-actions">
-
-                <a href="#destinasi" class="btn-primary">
-                    Jelajahi Destinasi
-                    <span>→</span>
-                </a>
-
-                <a href="#budaya" class="btn-link">
-                    Kenali Budaya Jogja
-                    <span></span>
-                </a>
-
+                <a href="#destinasi" class="btn btn-dark">Jelajahi Destinasi <span>↗</span></a>
+                <a href="#tentang" class="text-link">Tentang Jogja <span></span></a>
             </div>
-
         </div>
 
-
-        <div class="hero-bottom">
-
+        <div class="hero-meta">
             <span>JOGJA TOURISM</span>
-
-            <span class="hero-credit">
-                by Wasisyoga
-            </span>
-
+            <span>BY WASISYOGA</span>
+            <span>2026</span>
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     DESTINASI
-========================= -->
-
-<section class="section destinasi" id="destinasi">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div>
-
-                <span class="eyebrow">
-                    DESTINASI YOGYAKARTA
-                </span>
-
-                <h2>
-                    Temukan Tempat
-                    <br>
-                    Menarik di Jogja
-                </h2>
-
-            </div>
-
-            <p>
-                Jelajahi berbagai destinasi wisata yang
-                menawarkan keindahan alam, budaya,
-                sejarah, dan pengalaman khas Yogyakarta.
-            </p>
-
+<section class="intro">
+    <div class="container intro-grid">
+        <div>
+            <p class="eyebrow">01 / DISCOVER</p>
+            <h2>Jogja bukan sekadar<br><em>sebuah tempat.</em></h2>
         </div>
+        <p class="intro-text">
+            Dari ikon kota hingga pesisir selatan, dari warisan budaya
+            hingga kreativitas generasi baru — setiap sudut Yogyakarta
+            memiliki cerita untuk dijelajahi.
+        </p>
+    </div>
+</section>
 
+<section class="destinations" id="destinasi">
+    <div class="container">
+        <div class="section-top">
+            <div>
+                <p class="eyebrow">02 / DESTINATIONS</p>
+                <h2>Empat wajah<br><em>Yogyakarta.</em></h2>
+            </div>
+            <p>Mulai perjalananmu dari empat kawasan dengan karakter dan pesona yang berbeda.</p>
+        </div>
 
         <div class="destination-grid">
 
-
-            <!-- KOTA -->
-
-            <article class="destination-card">
-
-                <div class="destination-number">
-                    01
+            <article class="destination-card large">
+                <a href="#" class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Tugu%20Jogja%20Landmark%20Kota%20Jogja.jpg" alt="Tugu Jogja" loading="lazy">
+                    <span class="image-shade"></span>
+                    <span class="image-label">KOTA YOGYAKARTA</span>
+                    <span class="number">01</span>
+                </a>
+                <div class="card-content">
+                    <p>THE HEART OF JOGJA</p>
+                    <h3>Kota Yogyakarta</h3>
+                    <span class="line"></span>
+                    <p class="desc">Ikon kota, sejarah, seni, kuliner, dan kehidupan urban yang berpadu dengan karakter Jogja.</p>
                 </div>
-
-                <div class="destination-image destination-city">
-                    <div class="image-overlay"></div>
-
-                    <span>
-                        KOTA
-                    </span>
-                </div>
-
-                <div class="destination-body">
-
-                    <span class="card-location">
-                        DAERAH ISTIMEWA YOGYAKARTA
-                    </span>
-
-                    <h3>
-                        Kota Yogyakarta
-                    </h3>
-
-                    <p>
-                        Pusat budaya, sejarah, kuliner,
-                        dan kehidupan kota yang menjadi
-                        bagian penting dari Yogyakarta.
-                    </p>
-
-                    <a href="#" class="card-link">
-                        Jelajahi
-                        <span>→</span>
-                    </a>
-
-                </div>
-
             </article>
 
-
-            <!-- SLEMAN -->
-
-            <article class="destination-card featured">
-
-                <div class="destination-number">
-                    02
+            <article class="destination-card">
+                <a href="#" class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Prambanan%20Temple%20Yogyakarta%20Indonesia.jpg" alt="Candi Prambanan" loading="lazy">
+                    <span class="image-shade"></span>
+                    <span class="image-label">SLEMAN</span>
+                    <span class="number">02</span>
+                </a>
+                <div class="card-content">
+                    <p>NORTH OF JOGJA</p>
+                    <h3>Sleman</h3>
+                    <span class="line"></span>
+                    <p class="desc">Warisan sejarah, lanskap hijau, dan destinasi kreatif di utara Yogyakarta.</p>
                 </div>
-
-                <div class="destination-image">
-
-                    <img
-                        src="https://commons.wikimedia.org/wiki/Special:FilePath/Prambanan%20Temple%20Yogyakarta%20Indonesia.jpg"
-                        alt="Candi Prambanan"
-                        loading="lazy"
-                    >
-
-                    <div class="image-overlay"></div>
-
-                    <span>
-                        SLEMAN
-                    </span>
-
-                </div>
-
-                <div class="destination-body">
-
-                    <span class="card-location">
-                        KABUPATEN SLEMAN
-                    </span>
-
-                    <h3>
-                        Sleman
-                    </h3>
-
-                    <p>
-                        Nikmati keindahan alam,
-                        budaya, dan berbagai destinasi
-                        menarik di kawasan utara Jogja.
-                    </p>
-
-                    <div class="photo-credit">
-                        Foto: Christopher Michel / Wikimedia Commons
-                    </div>
-
-                    <a href="#" class="card-link">
-                        Jelajahi
-                        <span>→</span>
-                    </a>
-
-                </div>
-
             </article>
 
-
-            <!-- BANTUL -->
-
             <article class="destination-card">
-
-                <div class="destination-number">
-                    03
+                <a href="#" class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Parangtritis%20beach.jpg" alt="Pantai Parangtritis" loading="lazy">
+                    <span class="image-shade"></span>
+                    <span class="image-label">BANTUL</span>
+                    <span class="number">03</span>
+                </a>
+                <div class="card-content">
+                    <p>SOUTHERN COAST</p>
+                    <h3>Bantul</h3>
+                    <span class="line"></span>
+                    <p class="desc">Pantai, desa wisata, seni, dan kreativitas yang tumbuh dari pesisir hingga pedesaan.</p>
                 </div>
-
-                <div class="destination-image destination-bantul">
-
-                    <div class="image-overlay"></div>
-
-                    <span>
-                        BANTUL
-                    </span>
-
-                </div>
-
-                <div class="destination-body">
-
-                    <span class="card-location">
-                        KABUPATEN BANTUL
-                    </span>
-
-                    <h3>
-                        Bantul
-                    </h3>
-
-                    <p>
-                        Temukan pantai, desa wisata,
-                        seni, kerajinan, dan berbagai
-                        pengalaman kreatif.
-                    </p>
-
-                    <a href="#" class="card-link">
-                        Jelajahi
-                        <span>→</span>
-                    </a>
-
-                </div>
-
             </article>
 
-
-            <!-- GUNUNGKIDUL -->
-
             <article class="destination-card">
-
-                <div class="destination-number">
-                    04
+                <a href="#" class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pandansimo%20Bridge%20view%20toward%20Bantul.jpg" alt="Jembatan Pandansimo" loading="lazy">
+                    <span class="image-shade"></span>
+                    <span class="image-label">KULON PROGO</span>
+                    <span class="number">04</span>
+                </a>
+                <div class="card-content">
+                    <p>WESTERN HORIZON</p>
+                    <h3>Kulon Progo</h3>
+                    <span class="line"></span>
+                    <p class="desc">Panorama alam dan kawasan pesisir barat dengan Jembatan Pandansimo sebagai ikon baru.</p>
                 </div>
-
-                <div class="destination-image destination-gunungkidul">
-
-                    <div class="image-overlay"></div>
-
-                    <span>
-                        GUNUNGKIDUL
-                    </span>
-
-                </div>
-
-                <div class="destination-body">
-
-                    <span class="card-location">
-                        KABUPATEN GUNUNGKIDUL
-                    </span>
-
-                    <h3>
-                        Gunungkidul
-                    </h3>
-
-                    <p>
-                        Pesona pantai, perbukitan,
-                        gua, dan kawasan karst yang
-                        menarik untuk dijelajahi.
-                    </p>
-
-                    <a href="#" class="card-link">
-                        Jelajahi
-                        <span>→</span>
-                    </a>
-
-                </div>
-
             </article>
 
-
-            <!-- KULON PROGO -->
-
             <article class="destination-card">
-
-                <div class="destination-number">
-                    05
+                <a href="#" class="destination-image">
+                    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Obelix%20Sea%20View.jpg" alt="Obelix Sea View Gunungkidul" loading="lazy">
+                    <span class="image-shade"></span>
+                    <span class="image-label">GUNUNGKIDUL</span>
+                    <span class="number">05</span>
+                </a>
+                <div class="card-content">
+                    <p>SOUTHERN HIGHLANDS</p>
+                    <h3>Gunungkidul</h3>
+                    <span class="line"></span>
+                    <p class="desc">Perbukitan karst, pantai selatan, dan panorama senja dari ketinggian.</p>
                 </div>
-
-                <div class="destination-image destination-kulonprogo">
-
-                    <div class="image-overlay"></div>
-
-                    <span>
-                        KULON PROGO
-                    </span>
-
-                </div>
-
-                <div class="destination-body">
-
-                    <span class="card-location">
-                        KABUPATEN KULON PROGO
-                    </span>
-
-                    <h3>
-                        Kulon Progo
-                    </h3>
-
-                    <p>
-                        Jelajahi panorama alam,
-                        perbukitan, desa wisata,
-                        dan pengalaman unik.
-                    </p>
-
-                    <a href="#" class="card-link">
-                        Jelajahi
-                        <span>→</span>
-                    </a>
-
-                </div>
-
             </article>
 
         </div>
 
+        <div class="source-note">
+            Foto destinasi bersumber dari Wikimedia Commons. Kredit fotografer dicantumkan pada bagian footer.
+        </div>
     </div>
-
 </section>
 
-
-<!-- =========================
-     EVENT
-========================= -->
-
-<section class="section section-alt" id="event">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div>
-
-                <span class="eyebrow">
-                    AGENDA YOGYAKARTA
-                </span>
-
-                <h2>
-                    Event Jogja
-                </h2>
-
-            </div>
-
-            <p>
-                Temukan berbagai event, festival,
-                dan kegiatan menarik di Yogyakarta.
-            </p>
-
-        </div>
-
-
-        <div class="event-grid">
-
-
-            <article class="event-card">
-
-                <div class="event-date">
-
-                    <strong>01</strong>
-                    <span>OKT</span>
-
-                </div>
-
-                <div>
-
-                    <span class="event-category">
-                        BUDAYA
-                    </span>
-
-                    <h3>
-                        Festival Budaya Yogyakarta
-                    </h3>
-
-                    <p>
-                        Ragam seni dan budaya Yogyakarta
-                        dalam satu rangkaian kegiatan.
-                    </p>
-
-                    <a href="#">
-                        Selengkapnya →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="event-card">
-
-                <div class="event-date">
-
-                    <strong>15</strong>
-                    <span>OKT</span>
-
-                </div>
-
-                <div>
-
-                    <span class="event-category">
-                        KREATIF
-                    </span>
-
-                    <h3>
-                        Jogja Creative Festival
-                    </h3>
-
-                    <p>
-                        Ruang bertemu bagi pelaku ekonomi
-                        kreatif dan masyarakat.
-                    </p>
-
-                    <a href="#">
-                        Selengkapnya →
-                    </a>
-
-                </div>
-
-            </article>
-
-
-            <article class="event-card">
-
-                <div class="event-date">
-
-                    <strong>20</strong>
-                    <span>NOV</span>
-
-                </div>
-
-                <div>
-
-                    <span class="event-category">
-                        PARIWISATA
-                    </span>
-
-                    <h3>
-                        Wonderful Jogja
-                    </h3>
-
-                    <p>
-                        Berbagai pengalaman wisata menarik
-                        dari berbagai wilayah Yogyakarta.
-                    </p>
-
-                    <a href="#">
-                        Selengkapnya →
-                    </a>
-
-                </div>
-
-            </article>
-
-        </div>
-
+<section class="statement" id="pengalaman">
+    <div class="container statement-inner">
+        <p class="eyebrow">03 / EXPERIENCES</p>
+        <h2>See more.<br><em>Feel more.</em><br>Remember Jogja.</h2>
+        <p>
+            Nikmati perjalanan dengan ritme yang lebih santai.
+            Datang untuk melihat, tinggal lebih lama untuk merasakan.
+        </p>
     </div>
-
 </section>
 
-
-<!-- =========================
-     KULINER
-========================= -->
-
-<section class="section" id="kuliner">
-
+<section class="experience">
     <div class="container">
-
-        <div class="section-heading">
-
+        <div class="section-top compact">
             <div>
-
-                <span class="eyebrow">
-                    CITA RASA JOGJA
-                </span>
-
-                <h2>
-                    Kuliner Khas
-                </h2>
-
+                <p class="eyebrow">04 / THE EXPERIENCE</p>
+                <h2>Yang membuat<br><em>Jogja istimewa.</em></h2>
             </div>
-
-            <p>
-                Mengenal kekayaan kuliner Yogyakarta
-                melalui cita rasa tradisional dan
-                kreativitas kuliner masa kini.
-            </p>
-
         </div>
 
-
-        <div class="food-grid">
-
-            <article class="food-card">
+        <div class="experience-grid">
+            <article>
                 <span>01</span>
-                <h3>Gudeg</h3>
-                <p>
-                    Kuliner ikonik Yogyakarta dengan
-                    cita rasa manis dan gurih.
-                </p>
-                <a href="#">Jelajahi →</a>
+                <h3>Culture</h3>
+                <p>Keraton, tradisi, wayang, tari, dan seni yang terus hidup di tengah masyarakat.</p>
+                <a href="#budaya">Explore culture ↗</a>
             </article>
-
-            <article class="food-card">
+            <article>
                 <span>02</span>
-                <h3>Bakpia</h3>
-                <p>
-                    Camilan khas Jogja dengan berbagai
-                    pilihan rasa yang menarik.
-                </p>
-                <a href="#">Jelajahi →</a>
+                <h3>Culinary</h3>
+                <p>Gudeg, bakpia, sate klathak, kopi, hingga kuliner modern dengan rasa lokal.</p>
+                <a href="#tentang">Taste Jogja ↗</a>
             </article>
-
-            <article class="food-card">
+            <article>
                 <span>03</span>
-                <h3>Sate Klathak</h3>
-                <p>
-                    Sajian sate khas dengan cita rasa
-                    sederhana namun kuat.
-                </p>
-                <a href="#">Jelajahi →</a>
+                <h3>Creative</h3>
+                <p>Kerajinan, fashion, desain, event, dan ekonomi kreatif dari generasi baru Jogja.</p>
+                <a href="#tentang">Meet the makers ↗</a>
             </article>
-
-            <article class="food-card">
-                <span>04</span>
-                <h3>Jajanan Tradisional</h3>
-                <p>
-                    Beragam jajanan tradisional yang
-                    masih menjadi bagian kehidupan
-                    masyarakat Jogja.
-                </p>
-                <a href="#">Jelajahi →</a>
-            </article>
-
         </div>
-
     </div>
-
 </section>
-
-
-<!-- =========================
-     BUDAYA
-========================= -->
 
 <section class="culture" id="budaya">
-
     <div class="container culture-inner">
-
-        <div class="culture-text">
-
-            <span class="eyebrow">
-                WARISAN BUDAYA
-            </span>
-
-            <h2>
-                Budaya yang
-                <br>
-                <em>Terus Hidup</em>
-            </h2>
-
+        <div>
+            <p class="eyebrow">05 / CULTURE</p>
+            <h2>Tradisi lama,<br><em>jiwa yang baru.</em></h2>
+        </div>
+        <div class="culture-copy">
             <p>
-                Yogyakarta merupakan salah satu pusat
-                kebudayaan Indonesia. Seni, tradisi,
-                sejarah, dan nilai-nilai lokal terus
-                menjadi bagian dari kehidupan masyarakat.
+                Yogyakarta memiliki hubungan yang kuat dengan sejarah,
+                seni, dan tradisi. Namun budaya Jogja tidak berhenti pada masa lalu.
+                Ia terus tumbuh, beradaptasi, dan menjadi bagian dari kehidupan hari ini.
             </p>
-
-            <a href="#" class="btn-primary">
-                Jelajahi Budaya
-                <span>→</span>
-            </a>
-
+            <div class="culture-tags">
+                <span>Keraton</span>
+                <span>Wayang</span>
+                <span>Tari</span>
+                <span>Gamelan</span>
+                <span>Tradisi</span>
+                <span>Seni</span>
+            </div>
         </div>
-
-
-        <div class="culture-list">
-
-            <div class="culture-item">
-
-                <span>01</span>
-
-                <div>
-                    <h3>Seni & Pertunjukan</h3>
-
-                    <p>
-                        Wayang, tari, musik, dan berbagai
-                        seni pertunjukan tradisional.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="culture-item">
-
-                <span>02</span>
-
-                <div>
-                    <h3>Sejarah & Warisan</h3>
-
-                    <p>
-                        Mengenal perjalanan sejarah dan
-                        warisan budaya Yogyakarta.
-                    </p>
-                </div>
-
-            </div>
-
-
-            <div class="culture-item">
-
-                <span>03</span>
-
-                <div>
-                    <h3>Tradisi Masyarakat</h3>
-
-                    <p>
-                        Berbagai tradisi yang terus
-                        diwariskan dari generasi ke generasi.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     EKRAF
-========================= -->
-
-<section class="section" id="ekraf">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div>
-
-                <span class="eyebrow">
-                    EKONOMI KREATIF
-                </span>
-
-                <h2>
-                    Kreativitas Jogja
-                </h2>
-
-            </div>
-
+<section class="about" id="tentang">
+    <div class="container about-grid">
+        <div>
+            <p class="eyebrow">06 / JOGJA TOURISM</p>
+            <h2>One page.<br><em>Many stories.</em></h2>
+        </div>
+        <div>
             <p>
-                Mengenal karya dan kreativitas para
-                pelaku ekonomi kreatif Yogyakarta.
+                JOGJA TOURISM adalah konsep portal informasi pariwisata
+                yang dirancang untuk menghadirkan Yogyakarta dalam tampilan
+                yang sederhana, modern, dan mudah dijelajahi.
             </p>
-
-        </div>
-
-
-        <div class="creative-grid">
-
-            <article class="creative-card">
-                <span>01</span>
-                <h3>Kerajinan</h3>
-                <p>
-                    Produk kreatif dengan sentuhan
-                    budaya lokal.
-                </p>
-            </article>
-
-            <article class="creative-card">
-                <span>02</span>
-                <h3>Fashion</h3>
-                <p>
-                    Perpaduan tradisi dan gaya modern
-                    dalam karya fashion.
-                </p>
-            </article>
-
-            <article class="creative-card">
-                <span>03</span>
-                <h3>Kuliner</h3>
-                <p>
-                    Inovasi kuliner dengan identitas
-                    dan cita rasa Jogja.
-                </p>
-            </article>
-
-            <article class="creative-card">
-                <span>04</span>
-                <h3>Digital Kreatif</h3>
-                <p>
-                    Ide dan inovasi digital dari
-                    generasi kreatif Yogyakarta.
-                </p>
-            </article>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     BERITA
-========================= -->
-
-<section class="section section-alt" id="berita">
-
-    <div class="container">
-
-        <div class="section-heading">
-
-            <div>
-
-                <span class="eyebrow">
-                    CERITA DARI JOGJA
-                </span>
-
-                <h2>
-                    Berita & Informasi
-                </h2>
-
-            </div>
-
             <p>
-                Informasi dan cerita seputar pariwisata,
-                budaya, ekonomi kreatif, dan kegiatan
-                di Yogyakarta.
+                Website ini dibuat sebagai proyek digital oleh <strong>Wasisyoga</strong>
+                dengan pendekatan visual yang menggabungkan nuansa premium,
+                editorial, dan identitas lokal Yogyakarta.
             </p>
-
         </div>
-
-
-        <div class="news-grid">
-
-            <article class="news-card">
-
-                <span>
-                    PARIWISATA
-                </span>
-
-                <h3>
-                    Menjelajahi Pesona Wisata Yogyakarta
-                </h3>
-
-                <p>
-                    Mengenal berbagai destinasi dan
-                    pengalaman wisata yang dapat ditemukan
-                    di Yogyakarta.
-                </p>
-
-                <a href="#">
-                    Baca Selengkapnya →
-                </a>
-
-            </article>
-
-
-            <article class="news-card">
-
-                <span>
-                    BUDAYA
-                </span>
-
-                <h3>
-                    Merawat Warisan Budaya Lokal
-                </h3>
-
-                <p>
-                    Mengenal lebih dekat kekayaan budaya
-                    dan tradisi masyarakat Yogyakarta.
-                </p>
-
-                <a href="#">
-                    Baca Selengkapnya →
-                </a>
-
-            </article>
-
-
-            <article class="news-card">
-
-                <span>
-                    EKRAF
-                </span>
-
-                <h3>
-                    Potensi Ekonomi Kreatif Jogja
-                </h3>
-
-                <p>
-                    Melihat kreativitas dan potensi para
-                    pelaku ekonomi kreatif Yogyakarta.
-                </p>
-
-                <a href="#">
-                    Baca Selengkapnya →
-                </a>
-
-            </article>
-
-        </div>
-
     </div>
-
-</section>
-
-
-<!-- =========================
-     PETA
-========================= -->
-
-<section class="map-section" id="peta">
-
-    <div class="container">
-
-        <div class="map-box">
-
-            <span class="eyebrow">
-                EXPLORE YOGYAKARTA
-            </span>
-
-            <h2>
-                Jelajahi Yogyakarta
-                <br>
-                Melalui Peta
-            </h2>
-
-            <p>
-                Temukan berbagai destinasi wisata,
-                kuliner, budaya, dan tempat menarik
-                yang tersebar di seluruh Yogyakarta.
-            </p>
-
-            <a href="#" class="btn-primary">
-                Buka Peta
-                <span>→</span>
-            </a>
-
-        </div>
-
-    </div>
-
 </section>
 
 </main>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer class="footer">
-
     <div class="container">
-
-        <div class="footer-grid">
-
-            <div class="footer-brand">
-
-                <div class="footer-logo">
-                    JOGJA <span>TOURISM</span>
-                </div>
-
-                <small>
-                    BY WASISYOGA
-                </small>
-
-                <p>
-                    Portal Informasi Pariwisata
-                    Daerah Istimewa Yogyakarta.
-                </p>
-
+        <div class="footer-top">
+            <div>
+                <a href="#beranda" class="footer-brand">JOGJA <span>TOURISM</span></a>
+                <p class="footer-by">BY WASISYOGA</p>
             </div>
-
-
-            <div class="footer-column">
-
-                <h3>
-                    Jelajahi
-                </h3>
-
-                <a href="#destinasi">Destinasi</a>
-                <a href="#event">Event</a>
-                <a href="#kuliner">Kuliner</a>
-                <a href="#budaya">Budaya</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>
-                    Informasi
-                </h3>
-
-                <a href="#ekraf">Ekraf</a>
-                <a href="#berita">Berita</a>
-                <a href="#peta">Peta</a>
-
-            </div>
-
-
-            <div class="footer-column">
-
-                <h3>
-                    Yogyakarta
-                </h3>
-
-                <p>
-                    Daerah Istimewa Yogyakarta
-                </p>
-
-                <p>
-                    Indonesia
-                </p>
-
-            </div>
-
+            <div class="footer-quote">Explore the Soul of Yogyakarta.</div>
         </div>
 
+        <div class="credits">
+            <p><strong>Image credits:</strong> Tugu Jogja — Herusutimbul; Prambanan — Christopher Michel; Parangtritis — Ulistomo; Pandansimo Bridge — Geotechnical Center for Tunnels and Structures, Ministry of Public Works; Obelix Sea View — Deprilsalucky. Wikimedia Commons.</p>
+        </div>
 
         <div class="footer-bottom">
-
-            <span>
-                © 2026 JOGJA TOURISM
-            </span>
-
-            <span>
-                Explore the Soul of Yogyakarta
-            </span>
-
+            <span>© 2026 JOGJA TOURISM</span>
+            <span>BY WASISYOGA</span>
+            <a href="#beranda">Back to top ↑</a>
         </div>
-
     </div>
-
 </footer>
 
-
 <script src="js/script.js"></script>
-
 </body>
 </html>
