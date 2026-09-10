@@ -1,0 +1,1 @@
+console.log("Jogja Tourism berhasil dijalankan.");
