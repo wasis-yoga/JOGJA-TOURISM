@@ -1652,3 +1652,57 @@ img {
     }
 
 }
+/* ==================================================
+   DESTINASI IMAGE CARD
+================================================== */
+
+.destinasi-image-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.destinasi-image {
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+}
+
+.destinasi-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.destinasi-image-card:hover .destinasi-image img {
+    transform: scale(1.05);
+}
+
+.destinasi-info {
+    padding: 25px;
+}
+
+.destinasi-info .destinasi-number {
+    display: block;
+    margin-bottom: 18px;
+}
+
+.destinasi-info h3 {
+    margin-bottom: 12px;
+}
+
+.destinasi-info p {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 600px) {
+
+    .destinasi-image {
+        height: 210px;
+    }
+
+    .destinasi-info {
+        padding: 25px;
+    }
+
+}
