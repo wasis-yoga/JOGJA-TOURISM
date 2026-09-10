@@ -1,174 +1,103 @@
-/* ==================================================
+/* =====================================================
    JOGJA TOURISM
-   by Wasisyoga
-================================================== */
+   BY WASISYOGA
+===================================================== */
 
 document.addEventListener("DOMContentLoaded", function () {
 
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    const navLinks = document.querySelectorAll(".nav-menu a");
+
+
     /* ================================================
-       MOBILE NAVIGATION
+       MOBILE MENU
     ================================================ */
 
-    const menuToggle =
-        document.getElementById("menuToggle");
-
-    const navLinks =
-        document.getElementById("navLinks");
-
-
-    if (menuToggle && navLinks) {
+    if (menuToggle && navMenu) {
 
         menuToggle.addEventListener("click", function () {
 
-            navLinks.classList.toggle("open");
+            menuToggle.classList.toggle("active");
 
-            const isOpen =
-                navLinks.classList.contains("open");
-
-            menuToggle.setAttribute(
-                "aria-expanded",
-                isOpen
-            );
+            navMenu.classList.toggle("open");
 
         });
 
 
-        /* close menu after clicking */
+        navLinks.forEach(function (link) {
 
-        navLinks.querySelectorAll("a")
-            .forEach(function (link) {
+            link.addEventListener("click", function () {
 
-                link.addEventListener("click", function () {
+                menuToggle.classList.remove("active");
 
-                    navLinks.classList.remove("open");
-
-                    menuToggle.setAttribute(
-                        "aria-expanded",
-                        "false"
-                    );
-
-                });
+                navMenu.classList.remove("open");
 
             });
 
-    }
+        });
 
+    }
 
 
     /* ================================================
        ACTIVE NAVIGATION
     ================================================ */
 
-    const sections =
-        document.querySelectorAll("section[id]");
-
-    const navItems =
-        document.querySelectorAll(".nav-links a");
+    const sections = document.querySelectorAll("main section[id]");
 
 
-    const observer =
-        new IntersectionObserver(
+    function updateActiveNavigation() {
 
-            function (entries) {
+        let currentSection = "";
 
-                entries.forEach(function (entry) {
-
-                    if (entry.isIntersecting) {
-
-                        const current =
-                            entry.target.getAttribute("id");
+        const scrollPosition =
+            window.scrollY + 150;
 
 
-                        navItems.forEach(function (item) {
+        sections.forEach(function (section) {
 
-                            item.classList.remove("active");
+            const sectionTop = section.offsetTop;
 
-                            if (
-                                item.getAttribute("href")
-                                === "#" + current
-                            ) {
+            const sectionHeight = section.offsetHeight;
 
-                                item.classList.add("active");
+            if (
+                scrollPosition >= sectionTop &&
+                scrollPosition < sectionTop + sectionHeight
+            ) {
 
-                            }
+                currentSection = section.getAttribute("id");
 
-                        });
-
-                    }
-
-                });
-
-            },
-
-            {
-                rootMargin:
-                    "-35% 0px -55% 0px"
             }
 
-        );
+        });
 
 
-    sections.forEach(function (section) {
+        navLinks.forEach(function (link) {
 
-        observer.observe(section);
+            link.classList.remove("active");
 
-    });
+            const href = link.getAttribute("href");
 
+            if (href === "#" + currentSection) {
 
+                link.classList.add("active");
 
-    /* ================================================
-       SCROLL REVEAL
-    ================================================ */
-
-    const revealElements =
-        document.querySelectorAll(
-            ".destination-card, " +
-            ".event-item, " +
-            ".food-card, " +
-            ".culture-items article, " +
-            ".creative-grid article, " +
-            ".news-card"
-        );
-
-
-    const revealObserver =
-        new IntersectionObserver(
-
-            function (entries, observer) {
-
-                entries.forEach(function (entry) {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                });
-
-            },
-
-            {
-                threshold: 0.12
             }
 
-        );
+        });
+
+    }
 
 
-    revealElements.forEach(function (element) {
+    window.addEventListener(
+        "scroll",
+        updateActiveNavigation,
+        { passive: true }
+    );
 
-        element.classList.add("reveal");
 
-        revealObserver.observe(element);
-
-    });
-
+    updateActiveNavigation();
 
 
     /* ================================================
@@ -177,26 +106,87 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.addEventListener("click", function (event) {
 
-        if (!navLinks || !menuToggle) {
-            return;
-        }
-
-
-        const clickedInsideNav =
-            navLinks.contains(event.target);
-
-        const clickedButton =
-            menuToggle.contains(event.target);
-
-
         if (
-            !clickedInsideNav &&
-            !clickedButton
+            navMenu &&
+            menuToggle &&
+            !navMenu.contains(event.target) &&
+            !menuToggle.contains(event.target)
         ) {
 
-            navLinks.classList.remove("open");
+            navMenu.classList.remove("open");
+
+            menuToggle.classList.remove("active");
 
         }
+
+    });
+
+
+    /* ================================================
+       ESC KEY
+    ================================================ */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (event.key === "Escape") {
+
+            navMenu.classList.remove("open");
+
+            menuToggle.classList.remove("active");
+
+        }
+
+    });
+
+
+    /* ================================================
+       SMOOTH SCROLL
+    ================================================ */
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+            const targetId =
+                this.getAttribute("href");
+
+            if (
+                targetId === "#" ||
+                !targetId
+            ) {
+
+                return;
+
+            }
+
+
+            const target =
+                document.querySelector(targetId);
+
+
+            if (target) {
+
+                event.preventDefault();
+
+                const navbarHeight =
+                    document.querySelector(".navbar").offsetHeight;
+
+                const targetPosition =
+                    target.getBoundingClientRect().top +
+                    window.pageYOffset -
+                    navbarHeight;
+
+                window.scrollTo({
+
+                    top: targetPosition,
+
+                    behavior: "smooth"
+
+                });
+
+            }
+
+        });
 
     });
 
